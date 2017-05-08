@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FMBaseViewController.h
 //  FMElemeAnimationDemo
 //
 //  Created by fm on 2017/5/8.
@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FMBaseViewController.h"
+#import "ZLNavigationController.h"
 
-@interface ViewController : FMBaseViewController
+@interface FMBaseViewController : UIViewController
 
 @end
