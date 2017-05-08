@@ -18,6 +18,11 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self.vc.myTableView registerClass:[FMEleMainListCell class] forCellReuseIdentifier:FMEleMainListCellIdentifier];
 }
 
+- (void)loadData
+{
+    [self.vc.headerView updateHeaderView];
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

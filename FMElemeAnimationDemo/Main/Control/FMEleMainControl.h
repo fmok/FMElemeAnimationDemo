@@ -17,5 +17,6 @@
 @property (nonatomic, weak) FMEleMainViewController *vc;
 
 - (void)registerCell;
+- (void)loadData;
 
 @end

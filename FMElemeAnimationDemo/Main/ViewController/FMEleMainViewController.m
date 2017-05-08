@@ -22,13 +22,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self configUI];
+    [self.control registerCell];
+    [self customNav];
+    [self.control loadData];
+}
+
+#pragma mark - Private methods
+- (void)configUI
+{
     __weak typeof(self) weakSelf = self;
     [self.view addSubview:self.myTableView];
     [self.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf.view);
     }];
-    [self.control registerCell];
-    [self customNav];
 }
 
 - (void)customNav
@@ -47,6 +54,7 @@
         _myTableView.backgroundColor = [UIColor clearColor];
         _myTableView.delegate = self.control;
         _myTableView.dataSource = self.control;
+        _myTableView.tableHeaderView = self.headerView;
     }
     return _myTableView;
 }
@@ -83,6 +91,14 @@
         _navTitleLabel.text = self.title;
     }
     return _navTitleLabel;
+}
+
+- (FMEleMainHeaderView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 150.f)];
+    }
+    return _headerView;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84072CAF1EC0A94F006A16F6 /* FMEleMainHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84072CAE1EC0A94F006A16F6 /* FMEleMainHeaderView.m */; };
+		84072CB31EC0AD51006A16F6 /* FMEleMainHeaderInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84072CB21EC0AD51006A16F6 /* FMEleMainHeaderInfoView.m */; };
 		8457B60E1EC03F200081B1A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B60D1EC03F200081B1A5 /* main.m */; };
 		8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6101EC03F200081B1A5 /* AppDelegate.m */; };
 		8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6181EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld */; };
@@ -51,6 +53,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84072CAD1EC0A94F006A16F6 /* FMEleMainHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleMainHeaderView.h; sourceTree = "<group>"; };
+		84072CAE1EC0A94F006A16F6 /* FMEleMainHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleMainHeaderView.m; sourceTree = "<group>"; };
+		84072CB01EC0AAA4006A16F6 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
+		84072CB11EC0AD51006A16F6 /* FMEleMainHeaderInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleMainHeaderInfoView.h; sourceTree = "<group>"; };
+		84072CB21EC0AD51006A16F6 /* FMEleMainHeaderInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleMainHeaderInfoView.m; sourceTree = "<group>"; };
 		8457B6091EC03F200081B1A5 /* FMElemeAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMElemeAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8457B60D1EC03F200081B1A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8457B60F1EC03F200081B1A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -176,6 +183,7 @@
 			children = (
 				8457B6671EC0451A0081B1A5 /* PrefixHeader.pch */,
 				8457B60D1EC03F200081B1A5 /* main.m */,
+				84072CB01EC0AAA4006A16F6 /* MacroDefinition.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -260,6 +268,10 @@
 			children = (
 				8457B6721EC04F910081B1A5 /* FMEleMainListCell.h */,
 				8457B6731EC04F910081B1A5 /* FMEleMainListCell.m */,
+				84072CAD1EC0A94F006A16F6 /* FMEleMainHeaderView.h */,
+				84072CAE1EC0A94F006A16F6 /* FMEleMainHeaderView.m */,
+				84072CB11EC0AD51006A16F6 /* FMEleMainHeaderInfoView.h */,
+				84072CB21EC0AD51006A16F6 /* FMEleMainHeaderInfoView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -464,6 +476,7 @@
 			files = (
 				8457B67F1EC05DAF0081B1A5 /* ViewController.m in Sources */,
 				8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */,
+				84072CAF1EC0A94F006A16F6 /* FMEleMainHeaderView.m in Sources */,
 				8457B65D1EC040490081B1A5 /* MASConstraintMaker.m in Sources */,
 				8457B66E1EC0479D0081B1A5 /* FMEleMainViewController.m in Sources */,
 				8457B6821EC060120081B1A5 /* FMBaseViewController.m in Sources */,
@@ -479,6 +492,7 @@
 				8457B60E1EC03F200081B1A5 /* main.m in Sources */,
 				8457B6741EC04F910081B1A5 /* FMEleMainListCell.m in Sources */,
 				8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */,
+				84072CB31EC0AD51006A16F6 /* FMEleMainHeaderInfoView.m in Sources */,
 				8457B65B1EC040490081B1A5 /* MASCompositeConstraint.m in Sources */,
 				8457B6621EC040490081B1A5 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 			);
@@ -718,6 +732,7 @@
 				8457B63B1EC03F200081B1A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8457B63C1EC03F200081B1A5 /* Build configuration list for PBXNativeTarget "FMElemeAnimationDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -726,6 +741,7 @@
 				8457B63E1EC03F200081B1A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8457B63F1EC03F200081B1A5 /* Build configuration list for PBXNativeTarget "FMElemeAnimationDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -734,6 +750,7 @@
 				8457B6411EC03F200081B1A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

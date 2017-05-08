@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "FMBaseViewController.h"
+#import "FMEleMainHeaderView.h"
 
 @interface FMEleMainViewController : FMBaseViewController
 
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UILabel *navTitleLabel;
+@property (nonatomic, strong) FMEleMainHeaderView *headerView;
 
 @end
