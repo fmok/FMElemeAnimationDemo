@@ -76,10 +76,10 @@
 }
 
 #pragma mark - Public methods
-- (void)updateData
+- (void)updateData:(NSInteger)section index:(NSInteger)index
 {
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:@"http://www.qqxoo.com/uploads/allimg/170504/135QaS5-3.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
-    self.titleLabel.text = @"滋补养生小炒肉";
+    self.titleLabel.text = [NSString stringWithFormat:@"滋补养生小炒肉 %@-%@", @(section), @(index)];
     self.desLabel.text = @"月售71份  好评率100%";
     [self setNeedsUpdateConstraints];
 }

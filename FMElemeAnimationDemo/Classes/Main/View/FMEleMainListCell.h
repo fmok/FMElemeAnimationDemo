@@ -15,6 +15,6 @@ typedef void(^btnPulsBlock)(NSInteger count, BOOL animated);
 @property (nonatomic, strong, readonly) UIButton *addBtn;
 @property (nonatomic, copy) btnPulsBlock block;
 
-- (void)updateData;
+- (void)updateData:(NSInteger)section index:(NSInteger)index;
 
 @end

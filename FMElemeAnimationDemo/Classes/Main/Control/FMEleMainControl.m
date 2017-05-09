@@ -75,12 +75,12 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FMEleMainListCell *cell = [tableView dequeueReusableCellWithIdentifier:FMEleMainListCellIdentifier forIndexPath:indexPath];
-    [cell updateData];
+    [cell updateData:indexPath.section index:indexPath.row];
     WS(weakSelf);
     __weak typeof(cell) weakCell = cell;
     cell.block = ^(NSInteger count, BOOL isBoom) {
         if (isBoom) {
-            CGRect startRect = [weakCell convertRect:weakCell.addBtn.frame toView:self.vc.view];
+            CGRect startRect = [weakCell convertRect:weakCell.addBtn.frame toView:weakSelf.vc.view];
             CGRect endRect = [weakSelf.vc.view convertRect:weakSelf.vc.toolbar.bagBtn.frame toView:weakSelf.vc.toolbar];
             [weakSelf.joinCartAnimation joinCartAnimationWithStartRect:startRect endRect:endRect toVC:weakSelf.vc];
             weakSelf.joinCartAnimation.animationFinishedBlock = ^() {

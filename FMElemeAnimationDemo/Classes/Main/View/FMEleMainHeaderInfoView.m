@@ -135,7 +135,7 @@
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.font = [UIFont systemFontOfSize:14.f];
+        _titleLabel.font = [UIFont systemFontOfSize:18.f];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.numberOfLines = 1;
     }
@@ -146,7 +146,7 @@
 {
     if (!_desLabel) {
         _desLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _desLabel.font = [UIFont systemFontOfSize:12.f];
+        _desLabel.font = [UIFont systemFontOfSize:14.f];
         _desLabel.textColor = [UIColor whiteColor];
         _desLabel.numberOfLines = 1;
     }
