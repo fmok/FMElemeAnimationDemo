@@ -34,7 +34,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 }
 
 #pragma mark - Animation
--(void)joinCartAnimationWithStartRect:(CGRect)startRect endRect:(CGRect)endRect
+- (void)joinCartAnimationWithStartRect:(CGRect)startRect endRect:(CGRect)endRect
 {
     _endPoint_x = endRect.origin.x+endRect.size.width/2.f;
     _endPoint_y = -(endRect.origin.y+endRect.size.height/2.f);
@@ -57,7 +57,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self groupAnimation];
 }
 
--(void)groupAnimation
+- (void)groupAnimation
 {
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     animation.path = _path.CGPath;
