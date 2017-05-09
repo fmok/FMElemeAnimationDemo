@@ -68,26 +68,33 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-    NSLog(@"\n*** %@ ***\n", @([change[@"new"] CGPointValue].y));
+    CGFloat contentOffsetY = [change[@"new"] CGPointValue].y;
+    NSLog(@"\n*** %@ ***\n", @(contentOffsetY));
     // 标题显隐 + 列表偏移
-    if (H_header_view - [change[@"new"] CGPointValue].y <= 64) {
+    if (H_header_view - contentOffsetY <= 64.f) {
         self.vc.navTitleLabel.hidden = NO;
+        [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(64.f);
+        }];
     } else {
         self.vc.navTitleLabel.hidden = YES;
-        if ([change[@"new"] CGPointValue].y < 0) {
+        if (contentOffsetY <= 0) {
             // 向下滑动
-            CGFloat offsetY = H_header_view + [change[@"new"] CGPointValue].y;
+            CGFloat offsetY = H_header_view + contentOffsetY;
             NSLog(@"&&&&&& %@ &&&&&&", @(offsetY));
+            [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.top.mas_equalTo(H_header_view);
+            }];
         } else {
             // 向上滑动
             [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(H_header_view-[change[@"new"] CGPointValue].y);
+                make.top.mas_equalTo(H_header_view-contentOffsetY);
             }];
         }
     }
     // 头部控件透明度变化
     CGFloat infoAlpha = 1.0;
-    infoAlpha = (H_header_view-64.f-[change[@"new"] CGPointValue].y)/(H_header_view-64.f);
+    infoAlpha = (H_header_view-64.f-contentOffsetY)/(H_header_view-64.f);
     if (infoAlpha>1) {
         infoAlpha = 1;
     }

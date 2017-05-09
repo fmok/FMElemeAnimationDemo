@@ -80,7 +80,7 @@
 {
     if (!_myTableView) {
         _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
-        _myTableView.backgroundColor = [UIColor clearColor];
+        _myTableView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
         _myTableView.delegate = self.control;
         _myTableView.dataSource = self.control;
         _myTableView.contentInset = UIEdgeInsetsMake(0, 0, H_EleBottomToolBar, 0);
