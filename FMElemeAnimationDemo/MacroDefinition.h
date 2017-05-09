@@ -9,6 +9,6 @@
 #ifndef MacroDefinition_h
 #define MacroDefinition_h
 
-
+#define MD_The_Store @"theStore"
 
 #endif /* MacroDefinition_h */

@@ -19,6 +19,11 @@
 
 @implementation FMEleMainViewController
 
+- (void)dealloc
+{
+    [self.myTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -26,6 +31,8 @@
     [self.control registerCell];
     [self customNav];
     [self.control loadData];
+    [self.myTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    [self.myTableView sendSubviewToBack:self.headerView];
 }
 
 #pragma mark - Private methods
@@ -44,6 +51,16 @@
     self.navigationBar.navigationItem.titleView = self.navTitleLabel;
     [self.navTitleLabel sizeToFit];
     [self.view addSubview:self.navigationBar];
+}
+
+#pragma mark - Override 
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo
+{
+    if ([eventName isEqualToString:MD_The_Store]) {
+        FMBaseViewController *vc = [[FMBaseViewController alloc] init];
+        vc.title = @"商家详情";
+        [self.zl_navigationController pushViewController:vc animated:YES];
+    }
 }
 
 #pragma mark - getter & setter
@@ -72,7 +89,7 @@
 {
     if (!_navigationBar) {
         _navigationBar = [[FMEleNavigationBar alloc] initWithRootVC:self];
-        [_navigationBar setTintColor:[UIColor blackColor]];
+        [_navigationBar setTintColor:[UIColor whiteColor]];
         // 去掉导航底部的线
         [_navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
         [_navigationBar setShadowImage:[[UIImage alloc] init]];
@@ -86,9 +103,10 @@
 {
     if (!_navTitleLabel) {
         _navTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _navTitleLabel.textColor = [UIColor blackColor];
+        _navTitleLabel.textColor = [UIColor whiteColor];
         _navTitleLabel.font = [UIFont systemFontOfSize:18.f];
         _navTitleLabel.text = self.title;
+        _navTitleLabel.hidden = YES;
     }
     return _navTitleLabel;
 }
@@ -96,7 +114,7 @@
 - (FMEleMainHeaderView *)headerView
 {
     if (!_headerView) {
-        _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 150.f)];
+        _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, H_header_view)];
     }
     return _headerView;
 }

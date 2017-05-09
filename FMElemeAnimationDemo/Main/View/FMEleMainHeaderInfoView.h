@@ -11,5 +11,6 @@
 @interface FMEleMainHeaderInfoView : UIView
 
 - (void)updateInfoView;
+- (void)setSubViewsAlpha:(CGFloat)alpha;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "FMEleMainHeaderInfoView.h"
+#import "UIImageView+WebCache.h"
 
 @interface FMEleMainHeaderInfoView()
 
@@ -27,6 +28,11 @@
         [self addSubview:self.imgView];
         [self addSubview:self.titleLabel];
         [self addSubview:self.desLabel];
+        self.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        tap.numberOfTapsRequired = 1;
+        tap.numberOfTouchesRequired = 1;
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
@@ -54,12 +60,28 @@
     [super updateConstraints];
 }
 
+#pragma mark - Events
+- (void)tapAction:(UITapGestureRecognizer *)tap
+{
+    NSLog(@"跳转商家详情");
+    [self.nextResponder routerEventWithName:MD_The_Store userInfo:nil];
+}
+
 #pragma mark - Public methods
 - (void)updateInfoView
 {
+    [self.bgImgView sd_setImageWithURL:[NSURL URLWithString:@"http://img.redocn.com/sheying/20140926/changdou_3143149.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:@"http://img.woyaogexing.com/touxiang/katong/20140110/864ea8353fe3edd3.jpg%21200X200.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
     self.titleLabel.text = @"肯德基宅急送（育知东路店）";
     self.desLabel.text = @"商家配送  平均40分钟  配送费￥9";
     [self setNeedsUpdateConstraints];
+}
+
+- (void)setSubViewsAlpha:(CGFloat)alpha
+{
+    self.imgView.alpha = alpha;
+    self.titleLabel.alpha = alpha;
+    self.desLabel.alpha = alpha;
 }
 
 #pragma mark - getter & setter
@@ -68,6 +90,7 @@
     if (!_bgImgView) {
         _bgImgView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _bgImgView.backgroundColor = [UIColor blueColor];
+        _bgImgView.contentMode = UIViewContentModeTop;
     }
     return _bgImgView;
 }

@@ -24,7 +24,8 @@
 {
     __weak typeof(self) weakSelf = self;
     [self.infoView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf);
+        make.top.equalTo(weakSelf);
+        make.left.and.right.equalTo(weakSelf);
     }];
     [super updateConstraints];
 }
