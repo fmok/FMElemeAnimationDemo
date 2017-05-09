@@ -87,7 +87,7 @@
 #pragma mark - Private methods
 - (void)showDelete:(BOOL)show
 {
-    WS(weakSelf);
+//    WS(weakSelf);
     self.deleteBtn.hidden = !show;
     if (show) {
         

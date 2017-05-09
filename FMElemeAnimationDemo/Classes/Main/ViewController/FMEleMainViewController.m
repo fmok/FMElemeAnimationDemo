@@ -80,7 +80,7 @@
 - (UITableView *)myTableView
 {
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _myTableView.backgroundColor = [UIColor clearColor];
         _myTableView.delegate = self.control;
         _myTableView.dataSource = self.control;

@@ -10,4 +10,8 @@
 
 @interface FMEleJoinCartAnimation : NSObject
 
+@property (nonatomic, copy) void(^animationFinishedBlock)();
+
+- (void)joinCartAnimationWithStartRect:(CGRect)startRect endRect:(CGRect)endRect toVC:(UIViewController *)toVC;
+
 @end
