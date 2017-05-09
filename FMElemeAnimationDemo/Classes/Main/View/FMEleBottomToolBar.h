@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define H_EleBottomToolBar 50.f
+
 @interface FMEleBottomToolBar : UIView
 
 @end

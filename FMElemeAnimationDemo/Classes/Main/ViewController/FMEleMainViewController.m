@@ -39,14 +39,21 @@
 - (void)configUI
 {
     WS(weakSelf);
+    [self.view addSubview:self.headerView];
+    [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.top.equalTo(weakSelf.view);
+        make.height.mas_equalTo(H_header_view);
+    }];
     [self.view addSubview:self.myTableView];
     [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.view);
+        make.left.and.right.equalTo(weakSelf.view);
+        make.top.equalTo(weakSelf.view).offset(H_header_view);
+        make.bottom.equalTo(weakSelf.view);
     }];
     [self.view addSubview:self.toolbar];
     [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.and.left.and.right.equalTo(weakSelf.view);
-        make.height.mas_equalTo(50.f);
+        make.height.mas_equalTo(H_EleBottomToolBar);
     }];
 }
 
@@ -76,7 +83,7 @@
         _myTableView.backgroundColor = [UIColor clearColor];
         _myTableView.delegate = self.control;
         _myTableView.dataSource = self.control;
-        _myTableView.tableHeaderView = self.headerView;
+        _myTableView.contentInset = UIEdgeInsetsMake(0, 0, H_EleBottomToolBar, 0);
     }
     return _myTableView;
 }
@@ -119,7 +126,7 @@
 - (FMEleMainHeaderView *)headerView
 {
     if (!_headerView) {
-        _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, H_header_view)];
+        _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectZero];
     }
     return _headerView;
 }
