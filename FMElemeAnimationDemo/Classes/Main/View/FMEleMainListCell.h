@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^btnPulsBlock)(NSInteger count, BOOL animated);
+
 @interface FMEleMainListCell : UITableViewCell
 
 @property (nonatomic, strong, readonly) UIButton *addBtn;
+@property (nonatomic, copy) btnPulsBlock block;
 
 - (void)updateData;
 

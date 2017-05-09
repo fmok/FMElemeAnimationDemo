@@ -10,7 +10,6 @@
 
 @interface FMEleBottomToolBar()
 
-@property (nonatomic, strong) UIButton *bagBtn;
 @property (nonatomic, strong) UIButton *accountBtn;
 
 @end
@@ -60,6 +59,7 @@
         _bagBtn = [[UIButton alloc] initWithFrame:CGRectZero];
         _bagBtn.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
         [_bagBtn setTitle:@"bag" forState:UIControlStateNormal];
+        _bagBtn.layer.cornerRadius = 3.f;
         [_bagBtn addTarget:self action:@selector(bagAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _bagBtn;

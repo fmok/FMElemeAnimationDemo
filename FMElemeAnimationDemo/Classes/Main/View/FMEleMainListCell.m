@@ -113,6 +113,7 @@
     }
     currentCount++;
     [self updateCountLabel];
+    self.block(currentCount, YES);
 }
 
 - (void)deleteAction:(UIButton *)sender
@@ -124,6 +125,7 @@
         self.countLabel.hidden = YES;
         [self showDelete:NO];
     }
+    self.block(currentCount, NO);
 }
 
 #pragma mark - getter & setter

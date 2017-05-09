@@ -13,4 +13,6 @@
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
 
+#define Screen_height [UIScreen mainScreen].bounds.size.height
+
 #endif /* MacroDefinition_h */

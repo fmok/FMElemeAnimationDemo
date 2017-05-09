@@ -58,6 +58,7 @@
 		84E60DD11EC176BE0084CEE0 /* FMEleBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD01EC176BE0084CEE0 /* FMEleBottomToolBar.m */; };
 		84E60DD71EC191460084CEE0 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD41EC191460084CEE0 /* YYFPSLabel.m */; };
 		84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD61EC191460084CEE0 /* YYWeakProxy.m */; };
+		84E60DDB1EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DDA1EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,8 @@
 		84E60DD41EC191460084CEE0 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		84E60DD51EC191460084CEE0 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		84E60DD61EC191460084CEE0 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		84E60DD91EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleJoinCartAnimation.h; sourceTree = "<group>"; };
+		84E60DDA1EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleJoinCartAnimation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,6 +476,8 @@
 			children = (
 				84E60DB51EC1719F0084CEE0 /* FMEleMainControl.h */,
 				84E60DB61EC1719F0084CEE0 /* FMEleMainControl.m */,
+				84E60DD91EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.h */,
+				84E60DDA1EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.m */,
 			);
 			path = Control;
 			sourceTree = "<group>";
@@ -704,6 +709,7 @@
 				8457B68E1EC0623E0081B1A5 /* FMEleNavigationBar.m in Sources */,
 				8457B6631EC040490081B1A5 /* View+MASAdditions.m in Sources */,
 				84E60D9B1EC15A2A0084CEE0 /* SDWebImagePrefetcher.m in Sources */,
+				84E60DDB1EC1ADFE0084CEE0 /* FMEleJoinCartAnimation.m in Sources */,
 				84E60DB01EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m in Sources */,
 				84E60D9F1EC15A2A0084CEE0 /* UIImage+WebP.m in Sources */,
 				84E60DAF1EC16FD10084CEE0 /* UIImageEffects.m in Sources */,

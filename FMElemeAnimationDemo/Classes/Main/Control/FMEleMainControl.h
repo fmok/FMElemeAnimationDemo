@@ -12,7 +12,8 @@
 
 @interface FMEleMainControl : NSObject<
     UITableViewDelegate,
-    UITableViewDataSource>
+    UITableViewDataSource,
+    CAAnimationDelegate>
 
 @property (nonatomic, weak) FMEleMainViewController *vc;
 

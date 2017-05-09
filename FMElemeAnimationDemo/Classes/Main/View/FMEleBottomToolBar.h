@@ -12,4 +12,6 @@
 
 @interface FMEleBottomToolBar : UIView
 
+@property (nonatomic, strong) UIButton *bagBtn;;
+
 @end
