@@ -56,7 +56,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     FMEleMainListCell *cell = [tableView dequeueReusableCellWithIdentifier:FMEleMainListCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",@(indexPath.row)];
+    [cell updateData];
     return cell;
 }
 

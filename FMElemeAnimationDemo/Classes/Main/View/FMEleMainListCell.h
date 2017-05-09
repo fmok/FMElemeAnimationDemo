@@ -10,4 +10,8 @@
 
 @interface FMEleMainListCell : UITableViewCell
 
+@property (nonatomic, strong, readonly) UIButton *addBtn;
+
+- (void)updateData;
+
 @end

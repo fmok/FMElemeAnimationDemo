@@ -117,7 +117,7 @@
     if (!_bgImgView) {
         _bgImgView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _bgImgView.backgroundColor = [UIColor blueColor];
-        _bgImgView.contentMode = UIViewContentModeTop;
+        _bgImgView.contentMode = UIViewContentModeTop|UIViewContentModeLeft|UIViewContentModeRight;
     }
     return _bgImgView;
 }

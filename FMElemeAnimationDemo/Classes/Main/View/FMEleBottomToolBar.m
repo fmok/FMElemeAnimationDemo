@@ -58,7 +58,7 @@
 {
     if (!_bagBtn) {
         _bagBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-        _bagBtn.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.8];
+        _bagBtn.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.8];
         [_bagBtn setTitle:@"bag" forState:UIControlStateNormal];
         [_bagBtn addTarget:self action:@selector(bagAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -69,8 +69,8 @@
 {
     if (!_accountBtn) {
         _accountBtn = [[UIButton alloc] initWithFrame:CGRectZero];
-        _accountBtn.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.8];
-        [_accountBtn setTitle:@"account" forState:UIControlStateNormal];
+        _accountBtn.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.8];
+        [_accountBtn setTitle:@" account " forState:UIControlStateNormal];
         [_accountBtn addTarget:self action:@selector(accountAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _accountBtn;
