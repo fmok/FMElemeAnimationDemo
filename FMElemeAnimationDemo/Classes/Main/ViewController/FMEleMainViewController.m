@@ -33,6 +33,7 @@
     [self.control loadData];
     [self.myTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     [self.myTableView sendSubviewToBack:self.headerView];
+    [self showFpsLabel];
 }
 
 #pragma mark - Private methods

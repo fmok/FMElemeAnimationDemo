@@ -11,4 +11,6 @@
 
 @interface FMBaseViewController : UIViewController
 
+- (void)showFpsLabel;
+
 @end

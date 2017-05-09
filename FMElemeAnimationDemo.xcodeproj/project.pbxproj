@@ -56,6 +56,8 @@
 		84E60DCB1EC171E10084CEE0 /* FMEleFoodDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DCA1EC171E10084CEE0 /* FMEleFoodDetailController.m */; };
 		84E60DCE1EC171F90084CEE0 /* FMEleFoodDetailControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DCD1EC171F90084CEE0 /* FMEleFoodDetailControl.m */; };
 		84E60DD11EC176BE0084CEE0 /* FMEleBottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD01EC176BE0084CEE0 /* FMEleBottomToolBar.m */; };
+		84E60DD71EC191460084CEE0 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD41EC191460084CEE0 /* YYFPSLabel.m */; };
+		84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DD61EC191460084CEE0 /* YYWeakProxy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,6 +183,10 @@
 		84E60DCD1EC171F90084CEE0 /* FMEleFoodDetailControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleFoodDetailControl.m; sourceTree = "<group>"; };
 		84E60DCF1EC176BE0084CEE0 /* FMEleBottomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleBottomToolBar.h; sourceTree = "<group>"; };
 		84E60DD01EC176BE0084CEE0 /* FMEleBottomToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleBottomToolBar.m; sourceTree = "<group>"; };
+		84E60DD31EC191460084CEE0 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		84E60DD41EC191460084CEE0 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		84E60DD51EC191460084CEE0 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		84E60DD61EC191460084CEE0 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +285,7 @@
 		8457B6421EC040490081B1A5 /* Des */ = {
 			isa = PBXGroup;
 			children = (
+				84E60DD21EC191460084CEE0 /* YYFPSLabel */,
 				84E60DA71EC16FD10084CEE0 /* LBBlurredImage */,
 				84E60DA31EC161820084CEE0 /* FMCategories */,
 				84E60D711EC15A2A0084CEE0 /* SDWebImage */,
@@ -519,6 +526,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		84E60DD21EC191460084CEE0 /* YYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				84E60DD31EC191460084CEE0 /* YYFPSLabel.h */,
+				84E60DD41EC191460084CEE0 /* YYFPSLabel.m */,
+				84E60DD51EC191460084CEE0 /* YYWeakProxy.h */,
+				84E60DD61EC191460084CEE0 /* YYWeakProxy.m */,
+			);
+			path = YYFPSLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -659,6 +677,7 @@
 				8457B67F1EC05DAF0081B1A5 /* ViewController.m in Sources */,
 				84E60D931EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m in Sources */,
 				8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */,
+				84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */,
 				84E60DCB1EC171E10084CEE0 /* FMEleFoodDetailController.m in Sources */,
 				8457B65D1EC040490081B1A5 /* MASConstraintMaker.m in Sources */,
 				8457B6821EC060120081B1A5 /* FMBaseViewController.m in Sources */,
@@ -691,6 +710,7 @@
 				84E60D9A1EC15A2A0084CEE0 /* SDWebImageManager.m in Sources */,
 				84E60D941EC15A2A0084CEE0 /* NSData+ImageContentType.m in Sources */,
 				8457B60E1EC03F200081B1A5 /* main.m in Sources */,
+				84E60DD71EC191460084CEE0 /* YYFPSLabel.m in Sources */,
 				8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */,
 				84E60DA61EC161820084CEE0 /* UIResponder+Router.m in Sources */,
 				8457B65B1EC040490081B1A5 /* MASCompositeConstraint.m in Sources */,

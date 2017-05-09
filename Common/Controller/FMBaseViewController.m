@@ -7,8 +7,11 @@
 //
 
 #import "FMBaseViewController.h"
+#import "YYFPSLabel.h"
 
 @interface FMBaseViewController ()
+
+@property (nonatomic, strong) YYFPSLabel *fpsLabel;
 
 @end
 
@@ -22,6 +25,19 @@
     [self setNavLeftBarButtonItem];
 }
 
+#pragma mark - Public methods
+- (void)showFpsLabel
+{
+    WS(weakSelf);
+    [self.view addSubview:self.fpsLabel];
+    [self.fpsLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(weakSelf.view).offset(0.f);
+        make.top.equalTo(weakSelf.view).offset(20.f);
+        make.size.mas_equalTo(CGSizeMake(80, 40));
+    }];
+}
+
+#pragma mark - Private methods
 - (void)setNavLeftBarButtonItem
 {
     UIBarButtonItem *backBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"top_navigation_back"] style:UIBarButtonItemStylePlain target:self action:@selector(popVC)];
@@ -33,6 +49,15 @@
 - (void)popVC
 {
     [self.zl_navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - getter & setter
+- (YYFPSLabel *)fpsLabel
+{
+    if (!_fpsLabel) {
+        _fpsLabel = [[YYFPSLabel alloc] init];
+    }
+    return _fpsLabel;
 }
 
 - (void)didReceiveMemoryWarning {

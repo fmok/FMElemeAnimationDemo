@@ -26,7 +26,7 @@
     [self.view addSubview:self.startBtn];
     [self.startBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(weakSelf.view);
-        make.size.mas_equalTo(CGSizeMake(80, 40));
+        make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
 }
 
@@ -46,6 +46,7 @@
         _startBtn.backgroundColor = [UIColor yellowColor];
         [_startBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [_startBtn setTitle:@"start" forState:UIControlStateNormal];
+        _startBtn.layer.cornerRadius = 50.f;
         [_startBtn addTarget:self action:@selector(startClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _startBtn;
