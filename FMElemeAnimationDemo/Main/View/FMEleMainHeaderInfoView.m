@@ -8,6 +8,7 @@
 
 #import "FMEleMainHeaderInfoView.h"
 #import "UIImageView+WebCache.h"
+#import "UIImageEffects.h"
 
 @interface FMEleMainHeaderInfoView()
 
@@ -39,7 +40,7 @@
 
 - (void)updateConstraints
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf);
     [self.bgImgView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf);
     }];
@@ -70,7 +71,12 @@
 #pragma mark - Public methods
 - (void)updateInfoView
 {
-    [self.bgImgView sd_setImageWithURL:[NSURL URLWithString:@"http://img.redocn.com/sheying/20140926/changdou_3143149.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
+    WS(weakSelf);
+    [self.bgImgView sd_setImageWithURL:[NSURL URLWithString:@"http://img.redocn.com/sheying/20140926/changdou_3143149.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        if (image) {
+            [weakSelf setBlurEffectWithImage:image];
+        }
+    }];
     [self.imgView sd_setImageWithURL:[NSURL URLWithString:@"http://img.woyaogexing.com/touxiang/katong/20140110/864ea8353fe3edd3.jpg%21200X200.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
     self.titleLabel.text = @"肯德基宅急送（育知东路店）";
     self.desLabel.text = @"商家配送  平均40分钟  配送费￥9";
@@ -82,6 +88,27 @@
     self.imgView.alpha = alpha;
     self.titleLabel.alpha = alpha;
     self.desLabel.alpha = alpha;
+}
+
+#pragma mark - Private methods
+//设置图片毛玻璃效果
+- (void)setBlurEffectWithImage:(UIImage *)image
+{
+    WS(ws);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //渲染毛玻璃效果（比较费时间，异步处理）
+        UIImage *blurEffectImage = [UIImageEffects imageByApplyingBlurToImage:image withRadius:20 tintColor:[UIColor colorWithRed:0.000 green:0.000 blue:0.000 alpha:0.12] saturationDeltaFactor:1.4 maskImage:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            ws.bgImgView.image = blurEffectImage;
+            CATransition *animation = [CATransition animation];
+            animation.duration = 0.f;
+            animation.timingFunction = UIViewAnimationCurveEaseInOut;
+            animation.type = kCATransitionFade;
+            [[ws.bgImgView layer] addAnimation:animation forKey:@"animation"];
+        });
+        
+    });
+    
 }
 
 #pragma mark - getter & setter

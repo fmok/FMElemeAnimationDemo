@@ -38,7 +38,7 @@
 #pragma mark - Private methods
 - (void)configUI
 {
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf);
     [self.view addSubview:self.myTableView];
     [self.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf.view);

@@ -22,7 +22,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     self.zl_navigationBarHidden = YES;
-    __weak typeof(self) weakSelf = self;
+    WS(weakSelf);
     [self.view addSubview:self.startBtn];
     [self.startBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(weakSelf.view);

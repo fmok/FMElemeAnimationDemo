@@ -50,6 +50,9 @@
 		84E60DA11EC15A2A0084CEE0 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60D901EC15A2A0084CEE0 /* UIImageView+WebCache.m */; };
 		84E60DA21EC15A2A0084CEE0 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60D921EC15A2A0084CEE0 /* UIView+WebCacheOperation.m */; };
 		84E60DA61EC161820084CEE0 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DA51EC161820084CEE0 /* UIResponder+Router.m */; };
+		84E60DAE1EC16FD10084CEE0 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DA91EC16FD10084CEE0 /* UIImage+ImageEffects.m */; };
+		84E60DAF1EC16FD10084CEE0 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DAB1EC16FD10084CEE0 /* UIImageEffects.m */; };
+		84E60DB01EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60DAD1EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +166,12 @@
 		84E60D921EC15A2A0084CEE0 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		84E60DA41EC161820084CEE0 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
 		84E60DA51EC161820084CEE0 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
+		84E60DA81EC16FD10084CEE0 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		84E60DA91EC16FD10084CEE0 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		84E60DAA1EC16FD10084CEE0 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageEffects.h; sourceTree = "<group>"; };
+		84E60DAB1EC16FD10084CEE0 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageEffects.m; sourceTree = "<group>"; };
+		84E60DAC1EC16FD10084CEE0 /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
+		84E60DAD1EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +270,7 @@
 		8457B6421EC040490081B1A5 /* Des */ = {
 			isa = PBXGroup;
 			children = (
+				84E60DA71EC16FD10084CEE0 /* LBBlurredImage */,
 				84E60DA31EC161820084CEE0 /* FMCategories */,
 				84E60D711EC15A2A0084CEE0 /* SDWebImage */,
 				8457B6431EC040490081B1A5 /* Masonry */,
@@ -441,6 +451,19 @@
 			path = FMCategories;
 			sourceTree = "<group>";
 		};
+		84E60DA71EC16FD10084CEE0 /* LBBlurredImage */ = {
+			isa = PBXGroup;
+			children = (
+				84E60DA81EC16FD10084CEE0 /* UIImage+ImageEffects.h */,
+				84E60DA91EC16FD10084CEE0 /* UIImage+ImageEffects.m */,
+				84E60DAA1EC16FD10084CEE0 /* UIImageEffects.h */,
+				84E60DAB1EC16FD10084CEE0 /* UIImageEffects.m */,
+				84E60DAC1EC16FD10084CEE0 /* UIImageView+LBBlurredImage.h */,
+				84E60DAD1EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m */,
+			);
+			path = LBBlurredImage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -591,6 +614,7 @@
 				84E60D9D1EC15A2A0084CEE0 /* UIImage+GIF.m in Sources */,
 				84E60D981EC15A2A0084CEE0 /* SDWebImageDownloader.m in Sources */,
 				8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */,
+				84E60DAE1EC16FD10084CEE0 /* UIImage+ImageEffects.m in Sources */,
 				84E60DA11EC15A2A0084CEE0 /* UIImageView+WebCache.m in Sources */,
 				84E60D9C1EC15A2A0084CEE0 /* UIButton+WebCache.m in Sources */,
 				8457B65C1EC040490081B1A5 /* MASConstraint.m in Sources */,
@@ -603,7 +627,9 @@
 				8457B68E1EC0623E0081B1A5 /* FMEleNavigationBar.m in Sources */,
 				8457B6631EC040490081B1A5 /* View+MASAdditions.m in Sources */,
 				84E60D9B1EC15A2A0084CEE0 /* SDWebImagePrefetcher.m in Sources */,
+				84E60DB01EC16FD10084CEE0 /* UIImageView+LBBlurredImage.m in Sources */,
 				84E60D9F1EC15A2A0084CEE0 /* UIImage+WebP.m in Sources */,
+				84E60DAF1EC16FD10084CEE0 /* UIImageEffects.m in Sources */,
 				84E60D9A1EC15A2A0084CEE0 /* SDWebImageManager.m in Sources */,
 				84E60D941EC15A2A0084CEE0 /* NSData+ImageContentType.m in Sources */,
 				8457B60E1EC03F200081B1A5 /* main.m in Sources */,
