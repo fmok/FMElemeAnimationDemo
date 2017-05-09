@@ -7,6 +7,7 @@
 //
 
 #import "FMEleMainControl.h"
+#import "FMEleFoodDetailController.h"
 
 NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
@@ -31,8 +32,8 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FMEleMainViewController *vc = [[FMEleMainViewController alloc] init];
-    vc.title = [NSString stringWithFormat:@"sub-%@",@(indexPath.row)];
+    FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
+    vc.title = [NSString stringWithFormat:@"food-%@",@(indexPath.row)];
     [self.vc.zl_navigationController pushViewController:vc animated:YES];
 }
 

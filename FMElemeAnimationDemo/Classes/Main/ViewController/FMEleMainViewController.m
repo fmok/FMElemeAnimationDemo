@@ -40,8 +40,13 @@
 {
     WS(weakSelf);
     [self.view addSubview:self.myTableView];
-    [self.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf.view);
+    }];
+    [self.view addSubview:self.toolbar];
+    [self.toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.and.left.and.right.equalTo(weakSelf.view);
+        make.height.mas_equalTo(50.f);
     }];
 }
 
@@ -117,6 +122,14 @@
         _headerView = [[FMEleMainHeaderView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, H_header_view)];
     }
     return _headerView;
+}
+
+- (FMEleBottomToolBar *)toolbar
+{
+    if (!_toolbar) {
+        _toolbar = [[FMEleBottomToolBar alloc] initWithFrame:CGRectZero];
+    }
+    return _toolbar;
 }
 
 - (void)didReceiveMemoryWarning {
