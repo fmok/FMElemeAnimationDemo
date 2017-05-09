@@ -34,7 +34,6 @@
 - (void)startClick:(UIButton *)sender
 {
     FMEleMainViewController *vc = [[FMEleMainViewController alloc] init];
-    vc.title = @"肯德基宅急送（育知东路店）";
     [self.zl_navigationController pushViewController:vc animated:YES];
 }
 

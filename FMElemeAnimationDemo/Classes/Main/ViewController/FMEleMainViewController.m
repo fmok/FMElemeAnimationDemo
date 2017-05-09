@@ -39,6 +39,7 @@
 #pragma mark - Private methods
 - (void)configUI
 {
+    self.title = @"肯德基宅急送（育知东路店）";
     WS(weakSelf);
     [self.view addSubview:self.headerView];
     [self.headerView mas_makeConstraints:^(MASConstraintMaker *make) {
