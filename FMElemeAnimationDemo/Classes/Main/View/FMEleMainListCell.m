@@ -113,7 +113,9 @@
     }
     currentCount++;
     [self updateCountLabel];
-    self.block(currentCount, YES);
+    if (self.deleteBtn && [self.delegate respondsToSelector:@selector(dealCountAction:isBoom:object:)]) {
+        [self.delegate dealCountAction:currentCount isBoom:YES object:self];
+    }
 }
 
 - (void)deleteAction:(UIButton *)sender
@@ -121,11 +123,18 @@
     NSLog(@"删除一份");
     currentCount--;
     [self updateCountLabel];
-    if (currentCount<= 0) {
+    if (currentCount <= 0) {
         self.countLabel.hidden = YES;
         [self showDelete:NO];
     }
-    self.block(currentCount, NO);
+    if (self.deleteBtn && [self.delegate respondsToSelector:@selector(dealCountAction:isBoom:object:)]) {
+        [self.delegate dealCountAction:currentCount isBoom:NO object:self];
+    }
+}
+
+- (void)prepareForReuse
+{
+    
 }
 
 #pragma mark - getter & setter

@@ -9,9 +9,6 @@
 #import "FMEleJoinCartAnimation.h"
 
 @interface FMEleJoinCartAnimation()<CAAnimationDelegate>
-{
-    UIViewController *_toVC;
-}
 
 @property (nonatomic, strong) CALayer *dotLayer;
 @property (nonatomic, strong) UIBezierPath *path;
@@ -32,7 +29,6 @@
 #pragma mark - Animation
 - (void)joinCartAnimationWithStartRect:(CGRect)startRect endRect:(CGRect)endRect toVC:(UIViewController *)toVC
 {
-    _toVC = toVC;
     CGFloat endPoint_x = endRect.origin.x+endRect.size.width/2.f;
     CGFloat endPoint_y = -(endRect.origin.y+endRect.size.height/2.f);
     
@@ -42,11 +38,13 @@
     _path = [UIBezierPath bezierPath];
     [_path moveToPoint:CGPointMake(startPoint_X, startPoint_Y)];
     [_path addCurveToPoint:CGPointMake(endPoint_x, endPoint_y) controlPoint1:CGPointMake(startPoint_X, startPoint_Y) controlPoint2:CGPointMake(startPoint_X - 180, startPoint_Y - 100)];
+    
     _dotLayer = [CALayer layer];
-    _dotLayer.backgroundColor = [UIColor redColor].CGColor;
+    _dotLayer.backgroundColor = [UIColor blueColor].CGColor;
     _dotLayer.frame = CGRectMake(0, 0, 20.f, 20.f);
     _dotLayer.cornerRadius = 10.f;
     [toVC.view.layer addSublayer:_dotLayer];
+    
     [self groupAnimation];
 }
 
@@ -76,7 +74,7 @@
 #pragma mark - CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
-    if ([[anim valueForKey:@"animationName"]isEqualToString:@"groupsAnimation"]) {
+    if ([[anim valueForKey:@"animationName"]isEqualToString:@"groupsAnimation"] && _animationFinishedBlock) {
         self.animationFinishedBlock();
     }
 }

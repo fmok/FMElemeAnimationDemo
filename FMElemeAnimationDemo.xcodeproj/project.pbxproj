@@ -609,7 +609,7 @@
 				TargetAttributes = {
 					8457B6081EC03F200081B1A5 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 7Q57U4NZX7;
+						DevelopmentTeam = 538CZ4N2AQ;
 						ProvisioningStyle = Automatic;
 					};
 					8457B6241EC03F200081B1A5 = {
@@ -865,7 +865,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7Q57U4NZX7;
+				DEVELOPMENT_TEAM = 538CZ4N2AQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = FMElemeAnimationDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = FMElemeAnimationDemo/Info.plist;
@@ -881,7 +881,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7Q57U4NZX7;
+				DEVELOPMENT_TEAM = 538CZ4N2AQ;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = FMElemeAnimationDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = FMElemeAnimationDemo/Info.plist;

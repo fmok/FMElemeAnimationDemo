@@ -33,6 +33,25 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self.vc.headerView updateHeaderView];
 }
 
+#pragma mark - FMEleMainListCellDelegate
+- (void)dealCountAction:(NSInteger)currentCount isBoom:(BOOL)isBoom object:(FMEleMainListCell *)obj
+{
+    WS(weakSelf);
+    if (isBoom) {
+        CGRect startRect = [obj convertRect:obj.addBtn.frame toView:weakSelf.vc.view];
+        CGRect endRect = [weakSelf.vc.view convertRect:weakSelf.vc.toolbar.bagBtn.frame toView:weakSelf.vc.toolbar];
+        [weakSelf.joinCartAnimation joinCartAnimationWithStartRect:startRect endRect:endRect toVC:weakSelf.vc];
+        weakSelf.joinCartAnimation.animationFinishedBlock = ^() {
+            CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+            shakeAnimation.duration = 0.15f;
+            shakeAnimation.fromValue = [NSNumber numberWithFloat:0.9];
+            shakeAnimation.toValue = [NSNumber numberWithFloat:1];
+            shakeAnimation.autoreverses = YES;
+            [weakSelf.vc.toolbar.bagBtn.layer addAnimation:shakeAnimation forKey:nil];
+        };
+    }
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -76,23 +95,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     FMEleMainListCell *cell = [tableView dequeueReusableCellWithIdentifier:FMEleMainListCellIdentifier forIndexPath:indexPath];
     [cell updateData:indexPath.section index:indexPath.row];
-    WS(weakSelf);
-    __weak typeof(cell) weakCell = cell;
-    cell.block = ^(NSInteger count, BOOL isBoom) {
-        if (isBoom) {
-            CGRect startRect = [weakCell convertRect:weakCell.addBtn.frame toView:weakSelf.vc.view];
-            CGRect endRect = [weakSelf.vc.view convertRect:weakSelf.vc.toolbar.bagBtn.frame toView:weakSelf.vc.toolbar];
-            [weakSelf.joinCartAnimation joinCartAnimationWithStartRect:startRect endRect:endRect toVC:weakSelf.vc];
-            weakSelf.joinCartAnimation.animationFinishedBlock = ^() {
-                CABasicAnimation *shakeAnimation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-                shakeAnimation.duration = 0.15f;
-                shakeAnimation.fromValue = [NSNumber numberWithFloat:0.9];
-                shakeAnimation.toValue = [NSNumber numberWithFloat:1];
-                shakeAnimation.autoreverses = YES;
-                [weakSelf.vc.toolbar.bagBtn.layer addAnimation:shakeAnimation forKey:nil];
-            };
-        }
-    };
+    cell.delegate = self;
     return cell;
 }
 
