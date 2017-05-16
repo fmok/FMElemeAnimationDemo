@@ -141,6 +141,15 @@
     return _toolbar;
 }
 
+- (FMEleMainSmallWindow *)smallWindow
+{
+    if (!_smallWindow) {
+        _smallWindow = [[FMEleMainSmallWindow alloc] initWithFrame:CGRectZero];
+        _smallWindow.delegate = self.control;
+    }
+    return _smallWindow;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

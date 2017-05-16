@@ -9,6 +9,9 @@
 #import "FMPanModalTransition.h"
 
 @interface FMPanModalTransition()
+{
+    CGRect _fromRect;
+}
 
 @end
 
@@ -18,17 +21,19 @@
 {
     self = [super init];
     if (self) {
-        self.mPercentDrivenInteractiveTransition = [[FMPercentDrivenInteractiveTransition alloc] init];
+//        self.mPercentDrivenInteractiveTransition = [[FMPercentDrivenInteractiveTransition alloc] init];
     }
     return self;
 }
 
 #pragma mark - Public methods
-- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC andToVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
+- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC andToVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated withFromRect:(CGRect)fromRect completion:(void (^ __nullable)(void))completion
 {
+    _fromRect = fromRect;
     toVC.transitioningDelegate = self;
     [self.mPercentDrivenInteractiveTransition wireToViewController:toVC];
     [fromVC presentViewController:toVC animated:animated completion:completion];
+    
 }
 
 - (void)dismissViewController:(UIViewController * _Nullable)objVC animated: (BOOL)flag completion: (void (^ __nullable)(void))completion
@@ -52,28 +57,30 @@
     UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
     UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     
+    CGRect startFrame = _fromRect;
+    CGRect endFrame = CGRectMake(0, 0, fromView.frame.size.width, fromView.frame.size.height);
+    
     if (toVC.isBeingPresented) {
         [containerView addSubview:toView];
         
-        toView.transform = CGAffineTransformMakeTranslation(fromView.frame.size.width, 0);
+        toView.frame = startFrame;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            toView.transform = CGAffineTransformIdentity;
-            fromView.transform = CGAffineTransformMakeTranslation(-fromView.frame.size.width * 0.5, 0);
+            toView.frame = endFrame;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+            [containerView addSubview:fromView];
+            [containerView sendSubviewToBack:fromView];
         }];
     }
     
     if (fromVC.isBeingDismissed) {
-        [containerView insertSubview:toView belowSubview:fromView];
         
-        toView.transform = CGAffineTransformMakeTranslation(-fromView.frame.size.width * 0.5, 0);
+        [containerView insertSubview:toView belowSubview:fromView];
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             
-            toView.transform = CGAffineTransformIdentity;
-            fromView.transform = CGAffineTransformMakeTranslation(fromView.frame.size.width, 0);
+            fromView.alpha = 0.f;
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
@@ -91,10 +98,10 @@
     return self;
 }
 
-- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator
-{
-    return self.mPercentDrivenInteractiveTransition.interacting ? self.mPercentDrivenInteractiveTransition : nil;
-}
+//- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator
+//{
+//    return self.mPercentDrivenInteractiveTransition.interacting ? self.mPercentDrivenInteractiveTransition : nil;
+//}
 
 
 @end

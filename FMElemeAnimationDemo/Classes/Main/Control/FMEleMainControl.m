@@ -13,6 +13,9 @@
 NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
 @interface FMEleMainControl()
+{
+    CGRect currentSelectImgRect;
+}
 
 @property (nonatomic, strong) CALayer *dotLayer;
 @property (nonatomic, strong) UIBezierPath *path;
@@ -34,6 +37,50 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self.vc.headerView updateHeaderView];
 }
 
+#pragma mark - Private methods
+- (UIView *)customSnapShotFromView:(UIView *)inputView {
+    
+    // Make an image from the input view.
+    CGSize size = inputView.bounds.size;
+    size.height -= 1;
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Create an image view.
+    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
+    snapshot.layer.masksToBounds = NO;
+    snapshot.layer.cornerRadius = 0.0;
+    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
+    snapshot.layer.shadowRadius = 5.0;
+    snapshot.layer.shadowOpacity = 0.1;
+    snapshot.backgroundColor = [UIColor redColor];
+    
+    return snapshot;
+}
+
+- (void)showSmallWindow
+{
+    WS(weakSelf);
+    [self.vc.view addSubview:self.vc.smallWindow];
+    [self.vc.smallWindow addSmallImageView];
+    self.vc.smallWindow.frame = self.vc.view.frame;
+    self.vc.smallWindow.smallImgView.frame = currentSelectImgRect;
+    [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
+        weakSelf.vc.smallWindow.smallImgView.frame = CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE);
+        weakSelf.vc.smallWindow.smallImgView.center = weakSelf.vc.smallWindow.center;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (void)hiddenSmallWindow
+{
+    [self.vc.smallWindow removeSmallImageView];
+    [self.vc.smallWindow removeFromSuperview];
+}
+
 #pragma mark - FMEleMainListCellDelegate
 - (void)dealCountAction:(NSInteger)currentCount isBoom:(BOOL)isBoom object:(FMEleMainListCell *)obj
 {
@@ -53,6 +100,17 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     }
 }
 
+#pragma mark - FMEleMainSmallWindowDelegate
+- (void)tapBlankInSmallWindow
+{
+    [self hiddenSmallWindow];
+}
+
+- (void)tapSmallImageView
+{
+    NSLog(@"show detail");
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -61,10 +119,9 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
-    vc.title = [NSString stringWithFormat:@"food-%@",@(indexPath.row)];
-//    [self.vc.zl_navigationController pushViewController:vc animated:YES];
-    [self.transition presentModalViewControllerWithFromVC:self.vc andToVC:vc animated:YES completion:nil];
+    FMEleMainListCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
+    currentSelectImgRect = [currentCell convertRect:currentCell.imgView.frame toView:self.vc.view];
+    [self showSmallWindow];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

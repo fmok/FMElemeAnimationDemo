@@ -20,28 +20,34 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor whiteColor];
-    [self fixNav];
-//    [self configUI];
+    [self configUI];
+    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+    [self addGes];
 }
 
 #pragma mark - Private methods
-- (void)fixNav
+- (void)addGes
 {
-    // 去掉导航底部的线
-    [self.zl_navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [self.zl_navigationBar setShadowImage:[[UIImage alloc] init]];
-    // backgroundView.alpha 设为 0
-    [self.zl_navigationBar setValue:@(0) forKeyPath:@"backgroundView.alpha"];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)configUI
 {
     WS(weakSelf);
-    [self.view addSubview:self.foodTableView];
-    [self.foodTableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.view);
-    }];
+//    [self.view addSubview:self.smallWindow];
+//    [self.smallWindow mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(weakSelf.view);
+//        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width*0.8, self.view.frame.size.height*0.6));
+//    }];
+}
+
+#pragma mark - ges
+- (void)tapAction:(UITapGestureRecognizer *)tap
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - getter & setter
@@ -63,6 +69,14 @@
     }
     return _control;
 }
+
+//- (FMEleDetailSmallWindow *)smallWindow
+//{
+//    if (!_smallWindow) {
+//        _smallWindow = [[FMEleDetailSmallWindow alloc] initWithFrame:CGRectZero];
+//    }
+//    return _smallWindow;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

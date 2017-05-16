@@ -18,6 +18,7 @@
 
 @interface FMEleMainListCell : UITableViewCell
 
+@property (nonatomic, strong, readonly) UIImageView *imgView;
 @property (nonatomic, strong, readonly) UIButton *addBtn;
 @property (nonatomic, weak) id<FMEleMainListCellDelegate>delegate;
 

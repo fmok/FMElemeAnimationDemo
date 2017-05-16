@@ -13,7 +13,8 @@
 @interface FMEleMainControl : NSObject<
     UITableViewDelegate,
     UITableViewDataSource,
-    FMEleMainListCellDelegate>
+    FMEleMainListCellDelegate,
+    FMEleMainSmallWindowDelegate>
 
 @property (nonatomic, weak) FMEleMainViewController *vc;
 

@@ -10,6 +10,7 @@
 #import "FMBaseViewController.h"
 #import "FMEleMainHeaderView.h"
 #import "FMEleBottomToolBar.h"
+#import "FMEleMainSmallWindow.h"
 
 @interface FMEleMainViewController : FMBaseViewController
 
@@ -17,5 +18,7 @@
 @property (nonatomic, strong) UILabel *navTitleLabel;
 @property (nonatomic, strong) FMEleMainHeaderView *headerView;
 @property (nonatomic, strong) FMEleBottomToolBar *toolbar;
+
+@property (nonatomic, strong) FMEleMainSmallWindow *smallWindow;
 
 @end
