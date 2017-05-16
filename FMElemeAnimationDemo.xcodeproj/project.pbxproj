@@ -28,6 +28,8 @@
 		8457B6851EC061D50081B1A5 /* top_navigation_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8457B6841EC061D50081B1A5 /* top_navigation_back@2x.png */; };
 		8457B68E1EC0623E0081B1A5 /* FMEleNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B68D1EC0623E0081B1A5 /* FMEleNavigationBar.m */; };
 		8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6911EC071770081B1A5 /* ZLNavigationController.m */; };
+		8457FF791ECACD1300B1E712 /* FMPanModalTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457FF761ECACD1300B1E712 /* FMPanModalTransition.m */; };
+		8457FF7A1ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457FF781ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m */; };
 		84E60D931EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60D731EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m */; };
 		84E60D941EC15A2A0084CEE0 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60D751EC15A2A0084CEE0 /* NSData+ImageContentType.m */; };
 		84E60D951EC15A2A0084CEE0 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E60D771EC15A2A0084CEE0 /* SDImageCache.m */; };
@@ -127,6 +129,10 @@
 		8457B68D1EC0623E0081B1A5 /* FMEleNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleNavigationBar.m; sourceTree = "<group>"; };
 		8457B6901EC071770081B1A5 /* ZLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLNavigationController.h; sourceTree = "<group>"; };
 		8457B6911EC071770081B1A5 /* ZLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLNavigationController.m; sourceTree = "<group>"; };
+		8457FF751ECACD1300B1E712 /* FMPanModalTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPanModalTransition.h; sourceTree = "<group>"; };
+		8457FF761ECACD1300B1E712 /* FMPanModalTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPanModalTransition.m; sourceTree = "<group>"; };
+		8457FF771ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMPercentDrivenInteractiveTransition.h; sourceTree = "<group>"; };
+		8457FF781ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMPercentDrivenInteractiveTransition.m; sourceTree = "<group>"; };
 		84E60D721EC15A2A0084CEE0 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		84E60D731EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		84E60D741EC15A2A0084CEE0 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -330,6 +336,7 @@
 		8457B6751EC053C30081B1A5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8457FF741ECACD1300B1E712 /* FMModalTransition */,
 				8457B68A1EC062280081B1A5 /* View */,
 				8457B6761EC053C30081B1A5 /* Controller */,
 			);
@@ -378,6 +385,17 @@
 				8457B6911EC071770081B1A5 /* ZLNavigationController.m */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		8457FF741ECACD1300B1E712 /* FMModalTransition */ = {
+			isa = PBXGroup;
+			children = (
+				8457FF751ECACD1300B1E712 /* FMPanModalTransition.h */,
+				8457FF761ECACD1300B1E712 /* FMPanModalTransition.m */,
+				8457FF771ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.h */,
+				8457FF781ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m */,
+			);
+			path = FMModalTransition;
 			sourceTree = "<group>";
 		};
 		84E60D711EC15A2A0084CEE0 /* SDWebImage */ = {
@@ -680,6 +698,7 @@
 			files = (
 				84E60D971EC15A2A0084CEE0 /* SDWebImageDecoder.m in Sources */,
 				8457B67F1EC05DAF0081B1A5 /* ViewController.m in Sources */,
+				8457FF7A1ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m in Sources */,
 				84E60D931EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m in Sources */,
 				8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */,
 				84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */,
@@ -689,6 +708,7 @@
 				84E60DC31EC1719F0084CEE0 /* FMEleMainHeaderView.m in Sources */,
 				84E60D961EC15A2A0084CEE0 /* SDWebImageCompat.m in Sources */,
 				84E60D951EC15A2A0084CEE0 /* SDImageCache.m in Sources */,
+				8457FF791ECACD1300B1E712 /* FMPanModalTransition.m in Sources */,
 				84E60D9E1EC15A2A0084CEE0 /* UIImage+MultiFormat.m in Sources */,
 				84E60D9D1EC15A2A0084CEE0 /* UIImage+GIF.m in Sources */,
 				84E60DD11EC176BE0084CEE0 /* FMEleBottomToolBar.m in Sources */,

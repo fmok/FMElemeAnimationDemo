@@ -15,5 +15,6 @@
 #import "ZLNavigationController.h"
 #import "MacroDefinition.h"
 #import "UIResponder+Router.h"
+#import "FMPanModalTransition.h"
 
 #endif /* PrefixHeader_pch */

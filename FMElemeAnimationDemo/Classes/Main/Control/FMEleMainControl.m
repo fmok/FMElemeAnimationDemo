@@ -17,6 +17,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 @property (nonatomic, strong) CALayer *dotLayer;
 @property (nonatomic, strong) UIBezierPath *path;
 @property (nonatomic, copy) FMEleJoinCartAnimation *joinCartAnimation;
+@property (nonatomic, strong) FMPanModalTransition *transition;
 
 @end
 
@@ -62,7 +63,8 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
     vc.title = [NSString stringWithFormat:@"food-%@",@(indexPath.row)];
-    [self.vc.zl_navigationController pushViewController:vc animated:YES];
+//    [self.vc.zl_navigationController pushViewController:vc animated:YES];
+    [self.transition presentModalViewControllerWithFromVC:self.vc andToVC:vc animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -149,5 +151,12 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     return _joinCartAnimation;
 }
 
+- (FMPanModalTransition *)transition
+{
+    if (!_transition) {
+        _transition = [FMPanModalTransition new];
+    }
+    return _transition;
+}
 
 @end
