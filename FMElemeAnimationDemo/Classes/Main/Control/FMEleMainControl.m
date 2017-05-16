@@ -60,19 +60,19 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     return snapshot;
 }
 
-- (void)showSmallWindow
+- (void)showSmallWindowWithStartView:(UIView *)startView
 {
     WS(weakSelf);
     [self.vc.view addSubview:self.vc.smallWindow];
     [self.vc.smallWindow addSmallImageView];
     self.vc.smallWindow.frame = self.vc.view.frame;
-    self.vc.smallWindow.smallImgView.frame = currentSelectImgRect;
+    [self.vc.smallWindow setSmallImageFrame:currentSelectImgRect];
+    __weak typeof(startView) weakStartView = startView;
+    [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:weakStartView]];
     [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
-        weakSelf.vc.smallWindow.smallImgView.frame = CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE);
-        weakSelf.vc.smallWindow.smallImgView.center = weakSelf.vc.smallWindow.center;
-    } completion:^(BOOL finished) {
-        
-    }];
+        [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE)];
+        [weakSelf.vc.smallWindow setSmallImageCenter:weakSelf.vc.smallWindow.center];
+    } completion:nil];
 }
 
 - (void)hiddenSmallWindow
@@ -121,7 +121,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     FMEleMainListCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
     currentSelectImgRect = [currentCell convertRect:currentCell.imgView.frame toView:self.vc.view];
-    [self showSmallWindow];
+    [self showSmallWindowWithStartView:currentCell.imgView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

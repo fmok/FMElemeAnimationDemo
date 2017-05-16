@@ -19,10 +19,12 @@
 @interface FMEleMainSmallWindow : UIView
 
 @property (nonatomic, weak) id<FMEleMainSmallWindowDelegate>delegate;
-@property (nonatomic, strong) FMEleMainSmallImgView *smallImgView;
 
 - (void)addSmallImageView;
 - (void)removeSmallImageView;
+- (void)setSmallImageFrame:(CGRect)frame;
+- (void)setSmallImageCenter:(CGPoint)point;
 - (void)updateSmallImageContent:(UIView *)smallView;
+
 
 @end

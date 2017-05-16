@@ -9,8 +9,12 @@
 #import "FMEleMainSmallWindow.h"
 
 @interface FMEleMainSmallWindow()
+{
+    UIView *tmpView;
+}
 
 @property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) FMEleMainSmallImgView *smallImgView;
 
 @end
 
@@ -48,13 +52,29 @@
 
 - (void)removeSmallImageView
 {
+    [tmpView removeFromSuperview];
     [self.smallImgView removeFromSuperview];
     self.smallImgView.transform = CGAffineTransformMakeTranslation(0, 0);
 }
 
+- (void)setSmallImageFrame:(CGRect)frame
+{
+    self.smallImgView.frame = frame;
+}
+
+- (void)setSmallImageCenter:(CGPoint)point
+{
+    self.smallImgView.center = point;
+}
+
 - (void)updateSmallImageContent:(UIView *)smallView
 {
-    
+    WS(weakSelf);
+    tmpView = smallView;
+    [self.smallImgView addSubview:tmpView];
+    [tmpView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.smallImgView);
+    }];
 }
 
 #pragma mark - Private methods
