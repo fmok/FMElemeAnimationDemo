@@ -8,15 +8,87 @@
 
 #import "FMEleMainSmallImgView.h"
 
+@interface FMEleMainSmallImgView()
+
+@property (nonatomic ,strong) UILabel *desLabel;
+@property (nonatomic, strong) UIView *contentImgView;
+@property (nonatomic, strong) UIView *bottomView;
+
+@end
+
 @implementation FMEleMainSmallImgView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor yellowColor];
+        self.backgroundColor = [UIColor clearColor];
+        [self addSubview:self.desLabel];
+        [self addSubview:self.contentImgView];
+        [self addSubview:self.bottomView];
     }
     return self;
+}
+
+- (void)updateConstraints
+{
+    WS(weakSelf);
+    CGFloat H = self.frame.size.height;
+    [self.desLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.top.and.right.equalTo(weakSelf);
+        make.height.mas_equalTo(H*0.1);
+    }];
+    [self.contentImgView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(weakSelf);
+        make.top.equalTo(weakSelf.desLabel.mas_bottom);
+        make.height.mas_equalTo(H*0.5);
+    }];
+    [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.and.bottom.equalTo(weakSelf);
+        make.height.mas_equalTo(H*0.4);
+    }];
+    [super updateConstraints];
+}
+
+#pragma mark - Public methods
+- (void)setContentImage:(UIView *)image
+{
+    WS(weakSelf);
+    [self.contentImgView addSubview:image];
+    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.contentImgView);
+    }];
+}
+
+#pragma mark - getter & setter
+- (UILabel *)desLabel
+{
+    if (!_desLabel) {
+        _desLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _desLabel.backgroundColor = [UIColor clearColor];
+        _desLabel.textColor = [UIColor whiteColor];
+        _desLabel.font = [UIFont systemFontOfSize:14.f];
+        _desLabel.numberOfLines = 1;
+    }
+    return _desLabel;
+}
+
+- (UIView *)contentImgView
+{
+    if (!_contentImgView) {
+        _contentImgView = [[UIView alloc] initWithFrame:CGRectZero];
+        _contentImgView.backgroundColor = [UIColor redColor];
+    }
+    return _contentImgView;
+}
+
+- (UIView *)bottomView
+{
+    if (!_bottomView) {
+        _bottomView = [[UIView alloc] initWithFrame:CGRectZero];
+        _bottomView.backgroundColor = [UIColor greenColor];
+    }
+    return _bottomView;
 }
 
 /*

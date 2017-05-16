@@ -233,8 +233,8 @@
 			isa = PBXGroup;
 			children = (
 				8457B6831EC061D50081B1A5 /* Res */,
-				8457B6751EC053C30081B1A5 /* Common */,
 				8457B6421EC040490081B1A5 /* Des */,
+				8457B6751EC053C30081B1A5 /* Common */,
 				8457B60B1EC03F200081B1A5 /* FMElemeAnimationDemo */,
 				8457B6281EC03F200081B1A5 /* FMElemeAnimationDemoTests */,
 				8457B6331EC03F200081B1A5 /* FMElemeAnimationDemoUITests */,

@@ -13,4 +13,6 @@
 
 @interface FMEleMainSmallImgView : UIControl
 
+- (void)setContentImage:(UIView *)image;
+
 @end

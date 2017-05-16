@@ -52,9 +52,9 @@
 
 - (void)removeSmallImageView
 {
-    [tmpView removeFromSuperview];
     [self.smallImgView removeFromSuperview];
     self.smallImgView.transform = CGAffineTransformMakeTranslation(0, 0);
+    self.smallImgView = nil;
 }
 
 - (void)setSmallImageFrame:(CGRect)frame
@@ -69,12 +69,7 @@
 
 - (void)updateSmallImageContent:(UIView *)smallView
 {
-    WS(weakSelf);
-    tmpView = smallView;
-    [self.smallImgView addSubview:tmpView];
-    [tmpView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(weakSelf.smallImgView);
-    }];
+    [self.smallImgView setContentImage:smallView];
 }
 
 #pragma mark - Private methods
