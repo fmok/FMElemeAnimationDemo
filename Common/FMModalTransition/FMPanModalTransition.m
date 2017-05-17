@@ -13,6 +13,8 @@
     CGRect _fromRect;
 }
 
+@property (nonatomic, strong, readwrite) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
+
 @end
 
 @implementation FMPanModalTransition
@@ -69,18 +71,10 @@
     
     if (fromVC.isBeingDismissed) {
         [containerView insertSubview:toVC.view belowSubview:fromVC.view];
-        
-        toVC.view.transform = CGAffineTransformMakeTranslation(-fromVC.view.frame.size.width * 0.5, 0);
-        
-        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            
-            toVC.view.transform = CGAffineTransformIdentity;
-            fromVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
-        } completion:^(BOOL finished) {
-            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-        }];
+        toVC.view.transform = CGAffineTransformIdentity;
+        fromVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
+        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }
-
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

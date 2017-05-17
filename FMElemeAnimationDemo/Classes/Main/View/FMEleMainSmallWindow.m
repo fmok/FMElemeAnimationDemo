@@ -17,6 +17,7 @@ CGFloat const alphaLimit = 0.07;
 }
 
 @property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UILabel *desLabel;
 @property (nonatomic, strong) FMEleMainSmallImgView *smallImgView;
 
 @end
@@ -60,13 +61,9 @@ CGFloat const alphaLimit = 0.07;
     self.smallImgView = nil;
 }
 
-- (void)setSmallImageFrame:(CGRect)frame
+- (void)setSmallImageFrame:(CGRect)frame center:(CGPoint)point
 {
     self.smallImgView.frame = frame;
-}
-
-- (void)setSmallImageCenter:(CGPoint)point
-{
     self.smallImgView.center = point;
 }
 
@@ -75,9 +72,10 @@ CGFloat const alphaLimit = 0.07;
     [self.smallImgView setContentImage:smallView];
 }
 
-- (void)setBottomContent
+- (void)showAnimationComplete
 {
-    
+    [self setTopDesContent];
+    [self setBottomContent];
 }
 
 #pragma mark - Private methods
@@ -87,6 +85,39 @@ CGFloat const alphaLimit = 0.07;
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;
     [self.bgView addGestureRecognizer:tap];
+}
+
+- (void)setTopDesContent
+{
+    [self addSubview:self.desLabel];
+    [self updateTopDesConstraints];
+}
+
+- (void)setDesTitle:(NSString *)des
+{
+    self.desLabel.text = des;
+}
+
+- (void)setDesAlpha:(CGFloat)alpha
+{
+    if (alpha > 1) {
+        alpha = 1;
+    }
+    self.desLabel.alpha = alpha;
+}
+
+- (void)updateTopDesConstraints
+{
+    WS(weakSelf);
+    [self.desLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.left.and.right.equalTo(weakSelf.smallImgView);
+        make.bottom.equalTo(weakSelf.smallImgView.mas_top).offset(-20.f);
+    }];
+}
+
+- (void)setBottomContent
+{
+    [self.smallImgView setBottomContent];
 }
 
 #pragma mark - Events
@@ -126,14 +157,16 @@ CGFloat const alphaLimit = 0.07;
                 }
             } else {
                 if (fraction <= alphaLimit) {
-                    [weakSelf.smallImgView setDesAlpha:(fraction/alphaLimit)];
+                    [weakSelf setDesAlpha:(fraction/alphaLimit)];
                 }
                 if (fraction < fractionLimit) {
-                    [weakSelf.smallImgView setDesTitle:@"下滑关闭"];
+                    [weakSelf setDesTitle:@"下滑关闭"];
                 } else {
-                    [weakSelf.smallImgView setDesTitle:@"释放关闭"];
+                    [weakSelf setDesTitle:@"释放关闭"];
                 }
                 weakSelf.smallImgView.transform = CGAffineTransformMakeTranslation(0, translation.y);
+                weakSelf.desLabel.transform = CGAffineTransformMakeTranslation(0, translation.y);
+                [weakSelf updateTopDesConstraints];
             }
             break;
         }
@@ -142,11 +175,13 @@ CGFloat const alphaLimit = 0.07;
         {
             if (fraction <= fractionLimit) {
                 [UIView animateWithDuration:0.1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:10 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                    weakSelf.desLabel.transform = CGAffineTransformIdentity;
                     weakSelf.smallImgView.transform = CGAffineTransformIdentity;
-                    [weakSelf.smallImgView setDesAlpha:0];
+                    [weakSelf setDesAlpha:0];
                 } completion:nil];
             } else {
                 [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.desLabel.transform = CGAffineTransformMakeTranslation(0, Screen_height);
                     weakSelf.smallImgView.transform = CGAffineTransformMakeTranslation(0, Screen_height);
                 } completion:^(BOOL finished) {
                     if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(tapBlankInSmallWindow)]) {
@@ -178,6 +213,19 @@ CGFloat const alphaLimit = 0.07;
         _bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
     }
     return _bgView;
+}
+
+- (UILabel *)desLabel
+{
+    if (!_desLabel) {
+        _desLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _desLabel.backgroundColor = [UIColor clearColor];
+        _desLabel.textColor = [UIColor whiteColor];
+        _desLabel.textAlignment = NSTextAlignmentCenter;
+        _desLabel.font = [UIFont systemFontOfSize:14.f];
+        _desLabel.numberOfLines = 1;
+    }
+    return _desLabel;
 }
 
 /*

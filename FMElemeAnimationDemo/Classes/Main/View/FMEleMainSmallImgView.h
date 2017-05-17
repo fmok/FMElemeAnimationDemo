@@ -16,7 +16,8 @@
 @property (nonatomic, strong, readonly) UIControl *contentImgView;
 
 - (void)setContentImage:(UIView *)image;
-- (void)setDesTitle:(NSString *)des;
-- (void)setDesAlpha:(CGFloat)alpha;
+//- (void)setDesTitle:(NSString *)des;
+//- (void)setDesAlpha:(CGFloat)alpha;
+- (void)setBottomContent;
 
 @end

@@ -22,10 +22,10 @@
 
 - (void)addSmallImageView;
 - (void)removeSmallImageView;
-- (void)setSmallImageFrame:(CGRect)frame;
-- (void)setSmallImageCenter:(CGPoint)point;
+- (void)setSmallImageFrame:(CGRect)frame center:(CGPoint)point;
 - (void)updateSmallImageContent:(UIView *)smallView;
 - (void)setBottomContent;
+- (void)showAnimationComplete;
 
 
 @end

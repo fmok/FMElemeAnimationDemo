@@ -12,7 +12,7 @@
 
 @interface FMPanModalTransition : NSObject<UIViewControllerAnimatedTransitioning,UIViewControllerTransitioningDelegate>
 
-@property (nonatomic, strong) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
+@property (nonatomic, strong, readonly) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
 
 - (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC andToVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated withFromRect:(CGRect)fromRect completion:(void (^ __nullable)(void))completion;
 
