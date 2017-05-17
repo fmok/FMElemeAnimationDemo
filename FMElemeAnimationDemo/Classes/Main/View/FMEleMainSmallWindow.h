@@ -19,6 +19,7 @@
 @interface FMEleMainSmallWindow : UIView
 
 @property (nonatomic, weak) id<FMEleMainSmallWindowDelegate>delegate;
+@property (nonatomic, strong, readonly) FMEleMainSmallImgView *smallImgView;
 
 - (void)addSmallImageView;
 - (void)removeSmallImageView;
@@ -26,6 +27,5 @@
 - (void)updateSmallImageContent:(UIView *)smallView;
 - (void)setBottomContent;
 - (void)showAnimationComplete;
-
 
 @end

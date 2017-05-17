@@ -13,9 +13,9 @@
 
 @interface FMEleMainSmallImgView : UIView
 
-@property (nonatomic, strong, readonly) UIControl *contentImgView;
+@property (nonatomic, strong, readonly) UIImageView *contentImgView;
 
-- (void)setContentImage:(UIView *)image;
+- (void)setContentImage:(UIView *)tmpImage;
 - (void)setBottomContent;
 
 @end

@@ -11,6 +11,7 @@
 @interface FMPanModalTransition()
 {
     CGRect _fromRect;
+    UIView *_fromView;
 }
 
 @property (nonatomic, strong, readwrite) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
@@ -29,13 +30,13 @@
 }
 
 #pragma mark - Public methods
-- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC andToVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated withFromRect:(CGRect)fromRect completion:(void (^ __nullable)(void))completion
+- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC fromRect:(CGRect)fromRect fromView:(UIView *)fromView toVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
 {
     _fromRect = fromRect;
+    _fromView = fromView;
     toVC.transitioningDelegate = self;
-    [self.mPercentDrivenInteractiveTransition wireToViewController:toVC];
+//    [self.mPercentDrivenInteractiveTransition wireToViewController:toVC];
     [fromVC presentViewController:toVC animated:animated completion:completion];
-    
 }
 
 - (void)dismissViewController:(UIViewController * _Nullable)objVC animated: (BOOL)flag completion: (void (^ __nullable)(void))completion
@@ -54,15 +55,17 @@
 {
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    
     UIView *containerView = [transitionContext containerView];
+    UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
     
     if (toVC.isBeingPresented) {
-        [containerView addSubview:toVC.view];
+        [containerView addSubview:toView];
         
-        toVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
+        toView.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            toVC.view.transform = CGAffineTransformIdentity;
+            toView.transform = CGAffineTransformIdentity;
             fromVC.view.transform = CGAffineTransformMakeTranslation(-fromVC.view.frame.size.width * 0.5, 0);
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
@@ -70,8 +73,8 @@
     }
     
     if (fromVC.isBeingDismissed) {
-        [containerView insertSubview:toVC.view belowSubview:fromVC.view];
-        toVC.view.transform = CGAffineTransformIdentity;
+        [containerView insertSubview:toView belowSubview:fromVC.view];
+        toView.transform = CGAffineTransformIdentity;
         fromVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }

@@ -18,7 +18,7 @@ CGFloat const alphaLimit = 0.07;
 
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *desLabel;
-@property (nonatomic, strong) FMEleMainSmallImgView *smallImgView;
+@property (nonatomic, strong, readwrite) FMEleMainSmallImgView *smallImgView;
 
 @end
 
@@ -201,7 +201,8 @@ CGFloat const alphaLimit = 0.07;
 {
     if (!_smallImgView) {
         _smallImgView = [[FMEleMainSmallImgView alloc] initWithFrame:CGRectZero];
-        [_smallImgView.contentImgView addTarget:self action:@selector(tapImageAction:) forControlEvents:UIControlEventTouchUpInside];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        [_smallImgView.contentImgView addGestureRecognizer:tap];
     }
     return _smallImgView;
 }

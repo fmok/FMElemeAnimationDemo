@@ -7,10 +7,11 @@
 //
 
 #import "FMEleMainSmallImgView.h"
+#import "UIImageView+WebCache.h"
 
 @interface FMEleMainSmallImgView()
 
-@property (nonatomic, strong, readwrite) UIControl *contentImgView;
+@property (nonatomic, strong, readwrite) UIImageView *contentImgView;
 @property (nonatomic, strong) UIView *bottomView;
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -82,12 +83,15 @@
 }
 
 #pragma mark - Public methods
-- (void)setContentImage:(UIView *)image
+- (void)setContentImage:(UIView *)tmpImage
 {
     WS(weakSelf);
-    [self.contentImgView addSubview:image];
-    [image mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentImgView addSubview:tmpImage];
+    [tmpImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(weakSelf.contentImgView);
+    }];
+    [self.contentImgView sd_setImageWithURL:[NSURL URLWithString:@"http://www.qqxoo.com/uploads/allimg/170504/135QaS5-3.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [tmpImage removeFromSuperview];
     }];
 }
 
@@ -113,10 +117,10 @@
 }
 
 #pragma mark - getter & setter
-- (UIControl *)contentImgView
+- (UIImageView *)contentImgView
 {
     if (!_contentImgView) {
-        _contentImgView = [[UIControl alloc] initWithFrame:CGRectZero];
+        _contentImgView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _contentImgView.backgroundColor = [UIColor clearColor];
     }
     return _contentImgView;

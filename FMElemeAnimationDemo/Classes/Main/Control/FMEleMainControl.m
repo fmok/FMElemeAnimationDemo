@@ -60,20 +60,26 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     return snapshot;
 }
 
-- (void)showSmallWindowWithStartView:(UIView *)startView
+- (void)showSmallWindowWithStartView:(UIView *)startView withAnimation:(BOOL)isAnimating
 {
     WS(weakSelf);
     [self.vc.view addSubview:self.vc.smallWindow];
     self.vc.smallWindow.frame = self.vc.view.frame;
     [self.vc.smallWindow addSmallImageView];
-    [self.vc.smallWindow setSmallImageFrame:currentSelectImgRect center:CGPointMake(CGRectGetMidX(currentSelectImgRect), CGRectGetMidY(currentSelectImgRect))];
-    __weak typeof(startView) weakStartView = startView;
-    [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:weakStartView]];
-    [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
-        [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
-    } completion:^(BOOL finished) {
-        [weakSelf.vc.smallWindow showAnimationComplete];
-    }];
+    if (isAnimating) {
+        [self.vc.smallWindow setSmallImageFrame:currentSelectImgRect center:CGPointMake(CGRectGetMidX(currentSelectImgRect), CGRectGetMidY(currentSelectImgRect))];
+        __weak typeof(startView) weakStartView = startView;
+        [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:weakStartView]];
+        [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
+            [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
+        } completion:^(BOOL finished) {
+            [weakSelf.vc.smallWindow showAnimationComplete];
+        }];
+    } else {
+        [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:startView]];
+        [self.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
+        [self.vc.smallWindow showAnimationComplete];
+    }
 }
 
 - (void)hiddenSmallWindow
@@ -111,7 +117,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     WS(weakSelf);
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
-    [self.transition presentModalViewControllerWithFromVC:self.vc andToVC:vc animated:YES withFromRect:self.vc.smallWindow.frame completion:^{
+    [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[self customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
         [weakSelf hiddenSmallWindow];
     }];
 }
@@ -126,7 +132,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     FMEleMainListCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
     currentSelectImgRect = [currentCell convertRect:currentCell.imgView.frame toView:self.vc.view];
-    [self showSmallWindowWithStartView:currentCell.imgView];
+    [self showSmallWindowWithStartView:currentCell.imgView withAnimation:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
