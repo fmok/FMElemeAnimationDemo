@@ -122,7 +122,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
     [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[self customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
-//        [weakSelf hiddenSmallWindow];
+        [vc customUI];
     }];
 }
 

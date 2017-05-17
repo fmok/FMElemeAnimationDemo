@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UITableView *foodTableView;
 
+- (void)customUI;
+
 @end

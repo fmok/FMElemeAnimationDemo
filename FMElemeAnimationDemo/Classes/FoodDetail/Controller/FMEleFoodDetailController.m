@@ -31,12 +31,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    [self configUI];
+//    [self configUI];
     [self addGes];
 }
 
 #pragma mark - Private methods
 - (void)configUI
+{
+    
+}
+
+- (void)addGes
+{
+    pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.view addGestureRecognizer:pan];
+}
+
+#pragma mark - Public methods
+- (void)customUI
 {
     WS(weakSelf);
     [self.view addSubview:self.backBtn];
@@ -45,12 +57,6 @@
         make.top.equalTo(weakSelf.view).offset(30.f);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
-}
-
-- (void)addGes
-{
-    pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    [self.view addGestureRecognizer:pan];
 }
 
 #pragma mark - Events
