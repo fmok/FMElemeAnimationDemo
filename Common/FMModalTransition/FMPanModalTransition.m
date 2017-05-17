@@ -52,39 +52,35 @@
 {
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
     UIView *containerView = [transitionContext containerView];
-    UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
-    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
-    
-    CGRect startFrame = _fromRect;
-    CGRect endFrame = CGRectMake(0, 0, fromView.frame.size.width, fromView.frame.size.height);
     
     if (toVC.isBeingPresented) {
-        [containerView addSubview:toView];
+        [containerView addSubview:toVC.view];
         
-        toView.frame = startFrame;
+        toVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            toView.frame = endFrame;
+            toVC.view.transform = CGAffineTransformIdentity;
+            fromVC.view.transform = CGAffineTransformMakeTranslation(-fromVC.view.frame.size.width * 0.5, 0);
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
-            [containerView addSubview:fromView];
-            [containerView sendSubviewToBack:fromView];
         }];
     }
     
     if (fromVC.isBeingDismissed) {
+        [containerView insertSubview:toVC.view belowSubview:fromVC.view];
         
-        [containerView insertSubview:toView belowSubview:fromView];
+        toVC.view.transform = CGAffineTransformMakeTranslation(-fromVC.view.frame.size.width * 0.5, 0);
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             
-            fromView.alpha = 0.f;
+            toVC.view.transform = CGAffineTransformIdentity;
+            fromVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
         } completion:^(BOOL finished) {
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
     }
+
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

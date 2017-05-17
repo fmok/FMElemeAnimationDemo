@@ -99,8 +99,8 @@ CGFloat const alphaLimit = 0.07;
 
 - (void)tapImageAction:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(tapSmallImageView)]) {
-        [self.delegate tapSmallImageView];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(showFoodDetail)]) {
+        [self.delegate showFoodDetail];
     }
 }
 
@@ -116,15 +116,14 @@ CGFloat const alphaLimit = 0.07;
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:
         {
-            // 1. Mark the interacting flag. Used when supplying it in delegate.
         }
-            
             break;
         case UIGestureRecognizerStateChanged:
         {
-            // 2. Calculate the percentage of guesture
             if (translation.y < 0) {
-                NSLog(@"show detail with animating");
+                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(showFoodDetail)]) {
+                    [weakSelf.delegate showFoodDetail];
+                }
             } else {
                 if (fraction <= alphaLimit) {
                     [weakSelf.smallImgView setDesAlpha:(fraction/alphaLimit)];
@@ -141,7 +140,6 @@ CGFloat const alphaLimit = 0.07;
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         {
-            // 3. Gesture over. Check if the transition should happen or not
             if (fraction <= fractionLimit) {
                 [UIView animateWithDuration:0.1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:10 options:UIViewAnimationOptionLayoutSubviews animations:^{
                     weakSelf.smallImgView.transform = CGAffineTransformIdentity;
@@ -168,7 +166,7 @@ CGFloat const alphaLimit = 0.07;
 {
     if (!_smallImgView) {
         _smallImgView = [[FMEleMainSmallImgView alloc] initWithFrame:CGRectZero];
-        [_smallImgView addTarget:self action:@selector(tapImageAction:) forControlEvents:UIControlEventTouchUpInside];
+        [_smallImgView.contentImgView addTarget:self action:@selector(tapImageAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _smallImgView;
 }

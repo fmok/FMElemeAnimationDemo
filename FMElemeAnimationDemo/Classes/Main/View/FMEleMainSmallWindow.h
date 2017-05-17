@@ -12,7 +12,7 @@
 @protocol FMEleMainSmallWindowDelegate <NSObject>
 
 - (void)tapBlankInSmallWindow;
-- (void)tapSmallImageView;
+- (void)showFoodDetail;
 
 @end
 

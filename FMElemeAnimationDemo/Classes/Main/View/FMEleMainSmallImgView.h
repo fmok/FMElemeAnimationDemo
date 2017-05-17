@@ -11,7 +11,9 @@
 #define W_SMALL_IMAGE Screen_width*0.8
 #define H_SMALL_IMAGE Screen_height*0.6
 
-@interface FMEleMainSmallImgView : UIControl
+@interface FMEleMainSmallImgView : UIView
+
+@property (nonatomic, strong, readonly) UIControl *contentImgView;
 
 - (void)setContentImage:(UIView *)image;
 - (void)setDesTitle:(NSString *)des;

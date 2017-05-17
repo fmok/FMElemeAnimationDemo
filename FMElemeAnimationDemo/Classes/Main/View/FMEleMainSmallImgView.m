@@ -11,7 +11,7 @@
 @interface FMEleMainSmallImgView()
 
 @property (nonatomic ,strong) UILabel *desLabel;
-@property (nonatomic, strong) UIView *contentImgView;
+@property (nonatomic, strong, readwrite) UIControl *contentImgView;
 @property (nonatomic, strong) UIView *bottomView;
 
 @end
@@ -89,10 +89,10 @@
     return _desLabel;
 }
 
-- (UIView *)contentImgView
+- (UIControl *)contentImgView
 {
     if (!_contentImgView) {
-        _contentImgView = [[UIView alloc] initWithFrame:CGRectZero];
+        _contentImgView = [[UIControl alloc] initWithFrame:CGRectZero];
         _contentImgView.backgroundColor = [UIColor redColor];
     }
     return _contentImgView;

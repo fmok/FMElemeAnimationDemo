@@ -108,9 +108,13 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self hiddenSmallWindow];
 }
 
-- (void)tapSmallImageView
+- (void)showFoodDetail
 {
-    NSLog(@"show detail");
+    WS(weakSelf);
+    FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
+    [self.transition presentModalViewControllerWithFromVC:self.vc andToVC:vc animated:YES withFromRect:self.vc.smallWindow.frame completion:^{
+        [weakSelf hiddenSmallWindow];
+    }];
 }
 
 #pragma mark - UITableViewDelegate

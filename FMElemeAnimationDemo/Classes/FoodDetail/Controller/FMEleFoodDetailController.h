@@ -7,11 +7,9 @@
 //
 
 #import "FMBaseViewController.h"
-//#import "FMEleDetailSmallWindow.h"
 
 @interface FMEleFoodDetailController : FMBaseViewController
 
-//@property (nonatomic, strong) FMEleDetailSmallWindow *smallWindow;
 @property (nonatomic, strong) UITableView *foodTableView;
 
 @end

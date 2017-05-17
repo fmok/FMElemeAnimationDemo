@@ -14,7 +14,7 @@
     NSInteger currentCount;
 }
 
-@property (nonatomic, strong) UIImageView *imgView;
+@property (nonatomic, strong, readwrite) UIImageView *imgView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *desLabel;
 @property (nonatomic, strong, readwrite) UIButton *addBtn;
@@ -130,11 +130,6 @@
     if (self.deleteBtn && [self.delegate respondsToSelector:@selector(dealCountAction:isBoom:object:)]) {
         [self.delegate dealCountAction:currentCount isBoom:NO object:self];
     }
-}
-
-- (void)prepareForReuse
-{
-    
 }
 
 #pragma mark - getter & setter

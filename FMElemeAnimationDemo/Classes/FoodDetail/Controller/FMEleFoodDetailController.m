@@ -12,6 +12,7 @@
 @interface FMEleFoodDetailController ()
 
 @property (nonatomic, strong) FMEleFoodDetailControl *control;
+@property (nonatomic, strong) UIButton *backBtn;
 
 @end
 
@@ -20,20 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
     [self configUI];
-    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
-    [self addGes];
 }
 
 #pragma mark - Private methods
-- (void)addGes
-{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    tap.numberOfTapsRequired = 1;
-    tap.numberOfTouchesRequired = 1;
-    [self.view addGestureRecognizer:tap];
-}
-
 - (void)configUI
 {
     WS(weakSelf);
@@ -42,10 +34,17 @@
 //        make.center.mas_equalTo(weakSelf.view);
 //        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width*0.8, self.view.frame.size.height*0.6));
 //    }];
+    
+    [self.view addSubview:self.backBtn];
+    [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.view).offset(8.f);
+        make.top.equalTo(weakSelf.view).offset(30.f);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
+    }];
 }
 
-#pragma mark - ges
-- (void)tapAction:(UITapGestureRecognizer *)tap
+#pragma mark - Events
+- (void)backAction:(UIButton *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -70,13 +69,16 @@
     return _control;
 }
 
-//- (FMEleDetailSmallWindow *)smallWindow
-//{
-//    if (!_smallWindow) {
-//        _smallWindow = [[FMEleDetailSmallWindow alloc] initWithFrame:CGRectZero];
-//    }
-//    return _smallWindow;
-//}
+- (UIButton *)backBtn
+{
+    if (!_backBtn) {
+        _backBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        [_backBtn setImage:[UIImage imageNamed:@"top_navigation_back"] forState:UIControlStateNormal];
+        [_backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _backBtn;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
