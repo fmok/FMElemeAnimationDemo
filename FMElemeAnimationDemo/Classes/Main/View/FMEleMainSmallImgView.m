@@ -10,7 +10,6 @@
 
 @interface FMEleMainSmallImgView()
 
-//@property (nonatomic ,strong) UILabel *desLabel;
 @property (nonatomic, strong, readwrite) UIControl *contentImgView;
 @property (nonatomic, strong) UIView *bottomView;
 
@@ -27,7 +26,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-//        [self addSubview:self.desLabel];
         [self addSubview:self.contentImgView];
         self.layer.cornerRadius = 10.f;
         self.layer.masksToBounds = YES;
@@ -39,13 +37,8 @@
 {
     WS(weakSelf);
     CGFloat H = self.frame.size.height;
-//    [self.desLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-//        make.left.and.top.and.right.equalTo(weakSelf);
-//        make.height.mas_equalTo(H*0.1);
-//    }];
     [self.contentImgView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.and.top.equalTo(weakSelf);
-//        make.top.equalTo(weakSelf.desLabel.mas_bottom);
         make.height.mas_equalTo(H*0.7);
     }];
     
@@ -98,19 +91,6 @@
     }];
 }
 
-//- (void)setDesTitle:(NSString *)des
-//{
-//    self.desLabel.text = des;
-//}
-
-//- (void)setDesAlpha:(CGFloat)alpha
-//{
-//    if (alpha > 1) {
-//        alpha = 1;
-//    }
-//    self.desLabel.alpha = alpha;
-//}
-
 - (void)setBottomContent
 {
     [self addSubview:self.bottomView];
@@ -133,19 +113,6 @@
 }
 
 #pragma mark - getter & setter
-//- (UILabel *)desLabel
-//{
-//    if (!_desLabel) {
-//        _desLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-//        _desLabel.backgroundColor = [UIColor clearColor];
-//        _desLabel.textColor = [UIColor whiteColor];
-//        _desLabel.textAlignment = NSTextAlignmentCenter;
-//        _desLabel.font = [UIFont systemFontOfSize:14.f];
-//        _desLabel.numberOfLines = 1;
-//    }
-//    return _desLabel;
-//}
-
 - (UIControl *)contentImgView
 {
     if (!_contentImgView) {
