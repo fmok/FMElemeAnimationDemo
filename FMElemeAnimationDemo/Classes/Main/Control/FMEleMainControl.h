@@ -20,5 +20,6 @@
 
 - (void)registerCell;
 - (void)loadData;
+- (void)hiddenSmallWindow;
 
 @end

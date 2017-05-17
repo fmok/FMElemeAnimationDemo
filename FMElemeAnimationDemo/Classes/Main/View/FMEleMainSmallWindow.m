@@ -13,9 +13,8 @@ CGFloat const alphaLimit = 0.07;
 
 @interface FMEleMainSmallWindow()
 {
-    UIView *tmpView;
+    __block BOOL isNeedBreakPanGes;
 }
-
 @property (nonatomic, strong) UIView *bgView;
 @property (nonatomic, strong) UILabel *desLabel;
 @property (nonatomic, strong, readwrite) FMEleMainSmallImgView *smallImgView;
@@ -29,7 +28,6 @@ CGFloat const alphaLimit = 0.07;
     self = [super initWithFrame:frame];
     if (self) {
         [self configUI];
-        [self addGes];
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
         [self addGestureRecognizer:pan];
     }
@@ -79,14 +77,6 @@ CGFloat const alphaLimit = 0.07;
 }
 
 #pragma mark - Private methods
-- (void)addGes
-{
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    tap.numberOfTapsRequired = 1;
-    tap.numberOfTouchesRequired = 1;
-    [self.bgView addGestureRecognizer:tap];
-}
-
 - (void)setTopDesContent
 {
     [self addSubview:self.desLabel];
@@ -152,7 +142,11 @@ CGFloat const alphaLimit = 0.07;
         case UIGestureRecognizerStateChanged:
         {
             if (translation.y < 0) {
-                if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(showFoodDetail)]) {
+                if (!isNeedBreakPanGes && weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(showFoodDetail)]) {
+                    isNeedBreakPanGes = YES;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)1*NSEC_PER_SEC), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                        isNeedBreakPanGes = NO;
+                    });
                     [weakSelf.delegate showFoodDetail];
                 }
             } else {
@@ -212,6 +206,10 @@ CGFloat const alphaLimit = 0.07;
     if (!_bgView) {
         _bgView = [[UIView alloc] initWithFrame:CGRectZero];
         _bgView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        tap.numberOfTapsRequired = 1;
+        tap.numberOfTouchesRequired = 1;
+        [_bgView addGestureRecognizer:tap];
     }
     return _bgView;
 }

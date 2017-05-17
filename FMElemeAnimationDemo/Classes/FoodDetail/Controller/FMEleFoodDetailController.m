@@ -10,6 +10,9 @@
 #import "FMEleFoodDetailControl.h"
 
 @interface FMEleFoodDetailController ()
+{
+    UIPanGestureRecognizer *pan;
+}
 
 @property (nonatomic, strong) FMEleFoodDetailControl *control;
 @property (nonatomic, strong) UIButton *backBtn;
@@ -18,23 +21,24 @@
 
 @implementation FMEleFoodDetailController
 
+- (void)dealloc
+{
+    NSLog(@"\n*** %@ ** %s ***\n", self.class, __func__);
+    [self.view removeGestureRecognizer:pan];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self configUI];
+    [self addGes];
 }
 
 #pragma mark - Private methods
 - (void)configUI
 {
     WS(weakSelf);
-//    [self.view addSubview:self.smallWindow];
-//    [self.smallWindow mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.mas_equalTo(weakSelf.view);
-//        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width*0.8, self.view.frame.size.height*0.6));
-//    }];
-    
     [self.view addSubview:self.backBtn];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view).offset(8.f);
@@ -43,10 +47,30 @@
     }];
 }
 
+- (void)addGes
+{
+    pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
+    [self.view addGestureRecognizer:pan];
+}
+
 #pragma mark - Events
 - (void)backAction:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"hiddenSmallWindow" object:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
+
+- (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
+    //Limit it between 0 and 1
+    CGFloat fraction = translation.y / (double)Screen_height;
+    fraction = fminf(fmaxf(fraction, 0.0), 1.0);
+    if (fraction >= 0.15) {
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+    }
 }
 
 #pragma mark - getter & setter

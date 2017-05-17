@@ -21,6 +21,8 @@
 
 - (void)dealloc
 {
+    NSLog(@"\n*** %@ ** %s ***\n", self.class, __func__);
+    [[NSNotificationCenter defaultCenter] removeObserver:self.control name:@"hiddenSmallWindow" object:nil];
     [self.myTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
 }
 
@@ -34,6 +36,7 @@
     [self.myTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     [self.myTableView sendSubviewToBack:self.headerView];
     [self showFpsLabel];
+    [[NSNotificationCenter defaultCenter] addObserver:self.control selector:@selector(hiddenSmallWindow) name:@"hiddenSmallWindow" object:nil];
 }
 
 #pragma mark - Private methods

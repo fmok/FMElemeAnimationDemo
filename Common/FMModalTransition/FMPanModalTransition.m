@@ -58,25 +58,31 @@
     
     UIView *containerView = [transitionContext containerView];
     UIView *toView = [transitionContext viewForKey:UITransitionContextToViewKey];
+    UIView *fromView = [transitionContext viewForKey:UITransitionContextFromViewKey];
     
     if (toVC.isBeingPresented) {
         [containerView addSubview:toView];
-        
-        toView.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
+        toView.frame = fromView.frame;
+        [toView addSubview:_fromView];
+        _fromView.frame = _fromRect;
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-            toView.transform = CGAffineTransformIdentity;
-            fromVC.view.transform = CGAffineTransformMakeTranslation(-fromVC.view.frame.size.width * 0.5, 0);
+            CGFloat H = _fromRect.size.height*fromView.frame.size.width/_fromRect.size.width;
+            _fromView.frame = CGRectMake(fromView.frame.origin.x, fromView.frame.origin.y, fromView.frame.size.width, H);
         } completion:^(BOOL finished) {
+            [_fromView removeFromSuperview];
             [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
         }];
     }
     
     if (fromVC.isBeingDismissed) {
         [containerView insertSubview:toView belowSubview:fromVC.view];
-        toView.transform = CGAffineTransformIdentity;
-        fromVC.view.transform = CGAffineTransformMakeTranslation(fromVC.view.frame.size.width, 0);
-        [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        
+        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+            fromView.frame = _fromRect;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+        }];
     }
 }
 

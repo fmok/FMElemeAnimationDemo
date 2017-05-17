@@ -55,7 +55,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
     snapshot.layer.shadowRadius = 5.0;
     snapshot.layer.shadowOpacity = 0.1;
-    snapshot.backgroundColor = [UIColor redColor];
+    snapshot.backgroundColor = [UIColor clearColor];
     
     return snapshot;
 }
@@ -118,7 +118,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     WS(weakSelf);
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
     [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[self customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
-        [weakSelf hiddenSmallWindow];
+//        [weakSelf hiddenSmallWindow];
     }];
 }
 
