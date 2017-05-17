@@ -15,6 +15,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 @interface FMEleMainControl()
 {
     CGRect currentSelectImgRect;
+    BOOL isSmallWindowAnimating;
 }
 
 @property (nonatomic, strong) CALayer *dotLayer;
@@ -67,6 +68,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     self.vc.smallWindow.frame = self.vc.view.frame;
     [self.vc.smallWindow addSmallImageView];
     if (isAnimating) {
+        isSmallWindowAnimating = YES;
         [self.vc.smallWindow setSmallImageFrame:currentSelectImgRect center:CGPointMake(CGRectGetMidX(currentSelectImgRect), CGRectGetMidY(currentSelectImgRect))];
         __weak typeof(startView) weakStartView = startView;
         [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:weakStartView]];
@@ -74,6 +76,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
             [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
         } completion:^(BOOL finished) {
             [weakSelf.vc.smallWindow showAnimationComplete];
+            isSmallWindowAnimating = NO;
         }];
     } else {
         [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:startView]];
@@ -84,8 +87,10 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
 - (void)hiddenSmallWindow
 {
-    [self.vc.smallWindow removeSmallImageView];
-    [self.vc.smallWindow removeFromSuperview];
+    if (!isSmallWindowAnimating) {
+        [self.vc.smallWindow removeSmallImageView];
+        [self.vc.smallWindow removeFromSuperview];
+    }
 }
 
 #pragma mark - FMEleMainListCellDelegate
@@ -115,7 +120,6 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 
 - (void)showFoodDetail
 {
-    WS(weakSelf);
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
     [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[self customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
 //        [weakSelf hiddenSmallWindow];
