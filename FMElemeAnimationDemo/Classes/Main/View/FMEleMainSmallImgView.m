@@ -44,7 +44,9 @@
         make.height.mas_equalTo(H*0.5);
     }];
     [self.bottomView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.bottom.equalTo(weakSelf);
+        make.left.and.right.and.equalTo(weakSelf.contentImgView);
+//        make.bottom.equalTo(weakSelf);
+        make.top.equalTo(weakSelf.contentImgView.mas_bottom);
         make.height.mas_equalTo(H*0.4);
     }];
     [super updateConstraints];
@@ -60,6 +62,19 @@
     }];
 }
 
+- (void)setDesTitle:(NSString *)des
+{
+    self.desLabel.text = des;
+}
+
+- (void)setDesAlpha:(CGFloat)alpha
+{
+    if (alpha > 1) {
+        alpha = 1;
+    }
+    self.desLabel.alpha = alpha;
+}
+
 #pragma mark - getter & setter
 - (UILabel *)desLabel
 {
@@ -67,6 +82,7 @@
         _desLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _desLabel.backgroundColor = [UIColor clearColor];
         _desLabel.textColor = [UIColor whiteColor];
+        _desLabel.textAlignment = NSTextAlignmentCenter;
         _desLabel.font = [UIFont systemFontOfSize:14.f];
         _desLabel.numberOfLines = 1;
     }
@@ -86,7 +102,7 @@
 {
     if (!_bottomView) {
         _bottomView = [[UIView alloc] initWithFrame:CGRectZero];
-        _bottomView.backgroundColor = [UIColor greenColor];
+        _bottomView.backgroundColor = [UIColor whiteColor];
     }
     return _bottomView;
 }

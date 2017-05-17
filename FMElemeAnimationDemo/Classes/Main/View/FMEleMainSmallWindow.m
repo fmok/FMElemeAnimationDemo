@@ -8,6 +8,9 @@
 
 #import "FMEleMainSmallWindow.h"
 
+CGFloat const fractionLimit = 0.1;
+CGFloat const alphaLimit = 0.07;
+
 @interface FMEleMainSmallWindow()
 {
     UIView *tmpView;
@@ -72,6 +75,11 @@
     [self.smallImgView setContentImage:smallView];
 }
 
+- (void)setBottomContent
+{
+    
+}
+
 #pragma mark - Private methods
 - (void)addGes
 {
@@ -99,7 +107,12 @@
 - (void)handleGesture:(UIPanGestureRecognizer *)gestureRecognizer
 {
     WS(weakSelf);
+    //
     CGPoint translation = [gestureRecognizer translationInView:gestureRecognizer.view.superview];
+    //Limit it between 0 and 1
+    CGFloat fraction = translation.y / (double)Screen_height;
+    fraction = fminf(fmaxf(fraction, 0.0), 1.0);
+    
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:
         {
@@ -112,19 +125,37 @@
             // 2. Calculate the percentage of guesture
             if (translation.y < 0) {
                 NSLog(@"show detail with animating");
-                return;
+            } else {
+                if (fraction <= alphaLimit) {
+                    [weakSelf.smallImgView setDesAlpha:(fraction/alphaLimit)];
+                }
+                if (fraction < fractionLimit) {
+                    [weakSelf.smallImgView setDesTitle:@"下滑关闭"];
+                } else {
+                    [weakSelf.smallImgView setDesTitle:@"释放关闭"];
+                }
+                weakSelf.smallImgView.transform = CGAffineTransformMakeTranslation(0, translation.y);
             }
-            CGFloat fraction = translation.y / (double)CGRectGetWidth([[UIScreen mainScreen] bounds]);
-            //Limit it between 0 and 1
-            fraction = fminf(fmaxf(fraction, 0.0), 1.0);
-//            CGRect originFrame = weakSelf.smallImgView.frame;
-            weakSelf.smallImgView.transform = CGAffineTransformMakeTranslation(0, translation.y);
             break;
         }
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         {
             // 3. Gesture over. Check if the transition should happen or not
+            if (fraction <= fractionLimit) {
+                [UIView animateWithDuration:0.1 delay:0 usingSpringWithDamping:0.2 initialSpringVelocity:10 options:UIViewAnimationOptionLayoutSubviews animations:^{
+                    weakSelf.smallImgView.transform = CGAffineTransformIdentity;
+                    [weakSelf.smallImgView setDesAlpha:0];
+                } completion:nil];
+            } else {
+                [UIView animateWithDuration:0.2 animations:^{
+                    weakSelf.smallImgView.transform = CGAffineTransformMakeTranslation(0, Screen_height);
+                } completion:^(BOOL finished) {
+                    if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(tapBlankInSmallWindow)]) {
+                        [weakSelf.delegate tapBlankInSmallWindow];
+                    }
+                }];
+            }
         }
             break;
         default:

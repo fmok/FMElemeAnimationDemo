@@ -25,6 +25,7 @@
 - (void)setSmallImageFrame:(CGRect)frame;
 - (void)setSmallImageCenter:(CGPoint)point;
 - (void)updateSmallImageContent:(UIView *)smallView;
+- (void)setBottomContent;
 
 
 @end

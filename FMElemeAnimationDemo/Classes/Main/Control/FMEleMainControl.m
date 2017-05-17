@@ -72,7 +72,9 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
         [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE)];
         [weakSelf.vc.smallWindow setSmallImageCenter:weakSelf.vc.smallWindow.center];
-    } completion:nil];
+    } completion:^(BOOL finished) {
+        [weakSelf.vc.smallWindow setBottomContent];
+    }];
 }
 
 - (void)hiddenSmallWindow
@@ -193,7 +195,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     // 头部控件透明度变化
     CGFloat infoAlpha = 1.0;
     infoAlpha = (H_header_view-64.f-contentOffsetY)/(H_header_view-64.f);
-    if (infoAlpha>1) {
+    if (infoAlpha > 1) {
         infoAlpha = 1;
     }
     [self.vc.headerView.infoView setSubViewsAlpha:infoAlpha];

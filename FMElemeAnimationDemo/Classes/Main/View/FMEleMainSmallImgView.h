@@ -14,5 +14,7 @@
 @interface FMEleMainSmallImgView : UIControl
 
 - (void)setContentImage:(UIView *)image;
+- (void)setDesTitle:(NSString *)des;
+- (void)setDesAlpha:(CGFloat)alpha;
 
 @end
