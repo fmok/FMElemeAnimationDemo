@@ -122,6 +122,7 @@
     if (!_contentImgView) {
         _contentImgView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _contentImgView.backgroundColor = [UIColor clearColor];
+        _contentImgView.userInteractionEnabled = YES;
     }
     return _contentImgView;
 }
