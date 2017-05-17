@@ -10,6 +10,7 @@
 #define MacroDefinition_h
 
 #define MD_The_Store @"theStore"
+#define MD_ADD_CHART @"addChart"
 
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
 

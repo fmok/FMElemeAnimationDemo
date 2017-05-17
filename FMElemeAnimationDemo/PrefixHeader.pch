@@ -16,5 +16,6 @@
 #import "MacroDefinition.h"
 #import "UIResponder+Router.h"
 #import "FMPanModalTransition.h"
+#import "UIResponder+Router.h"
 
 #endif /* PrefixHeader_pch */

@@ -38,6 +38,18 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     [self.vc.headerView updateHeaderView];
 }
 
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo
+{
+    if ([eventName isEqualToString:MD_The_Store]) {
+        FMBaseViewController *vc = [[FMBaseViewController alloc] init];
+        vc.title = @"商家详情";
+        [self.vc.zl_navigationController pushViewController:vc animated:YES];
+    } else if ([eventName isEqualToString:MD_ADD_CHART]) {
+        // 添加购物车
+//        [self hiddenSmallWindow];
+    }
+}
+
 #pragma mark - Private methods
 - (UIView *)customSnapShotFromView:(UIView *)inputView {
     

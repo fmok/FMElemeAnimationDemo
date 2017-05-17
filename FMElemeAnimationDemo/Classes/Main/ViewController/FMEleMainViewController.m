@@ -73,11 +73,7 @@
 #pragma mark - Override 
 - (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo
 {
-    if ([eventName isEqualToString:MD_The_Store]) {
-        FMBaseViewController *vc = [[FMBaseViewController alloc] init];
-        vc.title = @"商家详情";
-        [self.zl_navigationController pushViewController:vc animated:YES];
-    }
+    [self.control routerEventWithName:eventName userInfo:userInfo];
 }
 
 #pragma mark - getter & setter

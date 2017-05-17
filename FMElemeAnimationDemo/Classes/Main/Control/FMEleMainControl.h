@@ -21,5 +21,6 @@
 - (void)registerCell;
 - (void)loadData;
 - (void)hiddenSmallWindow;
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo;
 
 @end

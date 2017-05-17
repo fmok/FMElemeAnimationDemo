@@ -113,7 +113,7 @@
 #pragma mark - Evevnts
 - (void)addChartAction:(UIButton *)sender
 {
-    NSLog(@"add chart");
+    [self.nextResponder routerEventWithName:MD_ADD_CHART userInfo:nil];
 }
 
 #pragma mark - getter & setter
