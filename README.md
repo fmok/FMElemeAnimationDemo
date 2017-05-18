@@ -2,6 +2,7 @@
 <br>
 ## 基本效果如下：
 <br>
+![pic](https://raw.githubusercontent.com/johnlui/SwiftSideslipLikeQQ/master/assets/274a1428736205.gif)
 ![pic](https://github.com/fmok/FMElemeAnimationDemo/master/ScreenShots/IMG_2017.PNG)<br>
 ![pic](https://github.com/fmok/FMElemeAnimationDemo/master/ScreenShots/IMG_2018.PNG)<br>
 ![pic](https://github.com/fmok/FMElemeAnimationDemo/master/ScreenShots/IMG_2021.PNG)<br>
