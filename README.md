@@ -1,6 +1,7 @@
 # FMElemeAnimationDemo(仿饿了么动效)
 <br>
-## 基本效果如下：
+基本效果如下：
+----------------------------------- 
 <br>
 [1](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2017.PNG?raw=true)<br>
 [2](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2018.PNG?raw=true)<br>
@@ -10,7 +11,8 @@
 
 <br>
 <br>
-### 项目中用到的一些东东: 
+项目中用到的一些东东:
+----------------------------------- 
 <br>
 1.[关于多层事件传递：UIResponder (Router)](http://www.jianshu.com/p/4b60a57c207d) <br>
 
