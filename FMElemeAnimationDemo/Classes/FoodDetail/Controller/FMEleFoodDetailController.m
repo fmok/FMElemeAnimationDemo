@@ -8,6 +8,7 @@
 
 #import "FMEleFoodDetailController.h"
 #import "FMEleFoodDetailControl.h"
+#import "UIImageView+WebCache.h"
 
 @interface FMEleFoodDetailController ()
 {
@@ -25,6 +26,7 @@
 {
     NSLog(@"\n*** %@ ** %s ***\n", self.class, __func__);
     [self.view removeGestureRecognizer:pan];
+    [self.foodTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
 }
 
 - (void)viewDidLoad {
@@ -32,7 +34,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
 //    [self configUI];
+    [self.control loadData];
     [self addGes];
+    [self.foodTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
 }
 
 #pragma mark - Private methods
@@ -51,12 +55,18 @@
 - (void)customUI
 {
     WS(weakSelf);
+    [self.view addSubview:self.foodTableView];
+    [self.foodTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(weakSelf.view);
+    }];
     [self.view addSubview:self.backBtn];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.view).offset(8.f);
         make.top.equalTo(weakSelf.view).offset(30.f);
         make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
+    [self.headerView.contentImgView sd_setImageWithURL:[NSURL URLWithString:@"http://www.qqxoo.com/uploads/allimg/170504/135QaS5-3.jpg"] placeholderImage:nil options:SDWebImageRetryFailed completed:nil];
+    [self.headerView setBottomContent];
 }
 
 #pragma mark - Events
@@ -79,6 +89,12 @@
     }
 }
 
+#pragma mark - Override methods
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo
+{
+    [self.control routerEventWithName:eventName userInfo:userInfo];
+}
+
 #pragma mark - getter & setter
 - (UITableView *)foodTableView
 {
@@ -86,6 +102,7 @@
         _foodTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _foodTableView.delegate = self.control;
         _foodTableView.dataSource = self.control;
+        _foodTableView.tableHeaderView = self.headerView;
     }
     return _foodTableView;
 }
@@ -107,6 +124,14 @@
         [_backBtn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _backBtn;
+}
+
+- (FMEleMainSmallImgView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[FMEleMainSmallImgView alloc] initWithFrame:CGRectMake(0, 0, Screen_width, Screen_height*3/4.f)];
+    }
+    return _headerView;
 }
 
 

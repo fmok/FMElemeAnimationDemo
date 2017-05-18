@@ -7,10 +7,12 @@
 //
 
 #import "FMBaseViewController.h"
+#import "FMEleMainSmallImgView.h"
 
 @interface FMEleFoodDetailController : FMBaseViewController
 
 @property (nonatomic, strong) UITableView *foodTableView;
+@property (nonatomic, strong) FMEleMainSmallImgView *headerView;
 
 - (void)customUI;
 
