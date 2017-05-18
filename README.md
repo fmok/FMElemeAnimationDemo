@@ -2,7 +2,7 @@
 <br>
 ## 基本效果如下：
 <br>
-[github](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2017.PNG?raw=true "github")<br>
+[github](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2017.PNG "github")<br>
 [github](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2018.PNG?raw=true "github")<br>
 [github](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2021.PNG?raw=true "github")<br>
 [github](https://github.com/fmok/FMElemeAnimationDemo/blob/master/ScreenShots/IMG_2022.PNG?raw=true "github")<br>
