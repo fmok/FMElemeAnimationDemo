@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		841DDCB41ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */; };
+		84380D441ED2CA1B008B6C25 /* FMFuncButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84380D431ED2CA1B008B6C25 /* FMFuncButton.m */; };
 		8457B60E1EC03F200081B1A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B60D1EC03F200081B1A5 /* main.m */; };
 		8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6101EC03F200081B1A5 /* AppDelegate.m */; };
 		8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6181EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld */; };
@@ -87,6 +88,8 @@
 		84072CB01EC0AAA4006A16F6 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		841DDCB21ECD44EB00CBF6D5 /* FMEleFoodDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleFoodDetailCell.h; sourceTree = "<group>"; };
 		841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleFoodDetailCell.m; sourceTree = "<group>"; };
+		84380D421ED2CA1B008B6C25 /* FMFuncButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFuncButton.h; sourceTree = "<group>"; };
+		84380D431ED2CA1B008B6C25 /* FMFuncButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFuncButton.m; sourceTree = "<group>"; };
 		8457B6091EC03F200081B1A5 /* FMElemeAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMElemeAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8457B60D1EC03F200081B1A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8457B60F1EC03F200081B1A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -533,6 +536,8 @@
 				8457FF851ECAF17D00B1E712 /* FMEleMainSmallWindow.m */,
 				8457FF871ECAF48E00B1E712 /* FMEleMainSmallImgView.h */,
 				8457FF881ECAF48E00B1E712 /* FMEleMainSmallImgView.m */,
+				84380D421ED2CA1B008B6C25 /* FMFuncButton.h */,
+				84380D431ED2CA1B008B6C25 /* FMFuncButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -738,6 +743,7 @@
 				8457B65E1EC040490081B1A5 /* MASLayoutConstraint.m in Sources */,
 				8457B6611EC040490081B1A5 /* NSArray+MASAdditions.m in Sources */,
 				84E60DC51EC1719F0084CEE0 /* FMEleMainViewController.m in Sources */,
+				84380D441ED2CA1B008B6C25 /* FMFuncButton.m in Sources */,
 				84E60DC21EC1719F0084CEE0 /* FMEleMainHeaderInfoView.m in Sources */,
 				8457B6601EC040490081B1A5 /* MASViewConstraint.m in Sources */,
 				8457B65F1EC040490081B1A5 /* MASViewAttribute.m in Sources */,

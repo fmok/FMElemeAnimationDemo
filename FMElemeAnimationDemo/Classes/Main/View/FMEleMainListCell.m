@@ -17,8 +17,8 @@
 @property (nonatomic, strong, readwrite) UIImageView *imgView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *desLabel;
-@property (nonatomic, strong, readwrite) UIButton *addBtn;
-@property (nonatomic, strong) UIButton *deleteBtn;
+@property (nonatomic, strong, readwrite) FMFuncButton *addBtn;
+@property (nonatomic, strong) FMFuncButton *deleteBtn;
 @property (nonatomic, strong) UILabel *countLabel;
 
 @end

@@ -12,6 +12,9 @@
 {
     CGRect _fromRect;
     UIView *_fromView;
+    
+    CGRect _toRect;
+    UIView *_toView;
 }
 
 @property (nonatomic, strong, readwrite) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
