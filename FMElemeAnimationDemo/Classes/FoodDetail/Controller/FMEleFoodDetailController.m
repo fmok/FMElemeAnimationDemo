@@ -26,7 +26,6 @@
 {
     NSLog(@"\n*** %@ ** %s ***\n", self.class, __func__);
     [self.view removeGestureRecognizer:pan];
-    [self.foodTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
 }
 
 - (void)viewDidLoad {
@@ -36,7 +35,6 @@
 //    [self configUI];
     [self.control loadData];
     [self addGes];
-    [self.foodTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
 }
 
 #pragma mark - Private methods

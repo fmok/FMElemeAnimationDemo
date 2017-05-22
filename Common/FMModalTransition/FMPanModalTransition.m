@@ -42,7 +42,7 @@
     [fromVC presentViewController:toVC animated:animated completion:completion];
 }
 
-- (void)dismissViewController:(UIViewController * _Nullable)objVC animated: (BOOL)flag completion: (void (^ __nullable)(void))completion
+- (void)dismissViewController:(UIViewController * _Nullable)objVC animated:(BOOL)flag completion:(void (^ __nullable)(void))completion
 {
     objVC.transitioningDelegate = self;
     [objVC dismissViewControllerAnimated:flag completion:completion];

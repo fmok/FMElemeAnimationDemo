@@ -70,13 +70,14 @@ NSString *const FMEleFoodDetailCellIdentifier = @"FMEleFoodDetailCell";
     return 1;
 }
 
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat contentOffsetY = [change[@"new"] CGPointValue].y;
-    if (contentOffsetY < 0) {
+    CGFloat contentOffsetY = scrollView.contentOffset.y;
+    if (contentOffsetY < 0 && scrollView.tracking) {
         [self.vc dismissViewControllerAnimated:YES completion:nil];
     }
+    
 }
 
 
