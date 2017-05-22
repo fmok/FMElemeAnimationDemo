@@ -165,10 +165,10 @@
     return _desLabel;
 }
 
-- (UIButton *)addBtn
+- (FMFuncButton *)addBtn
 {
     if (!_addBtn) {
-        _addBtn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        _addBtn = [FMFuncButton buttonWithType:UIButtonTypeContactAdd];
         [_addBtn addTarget:self action:@selector(addAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _addBtn;
@@ -187,10 +187,10 @@
     return _countLabel;
 }
 
-- (UIButton *)deleteBtn
+- (FMFuncButton *)deleteBtn
 {
     if (!_deleteBtn) {
-        _deleteBtn = [[UIButton alloc] initWithFrame:CGRectZero];
+        _deleteBtn = [[FMFuncButton alloc] initWithFrame:CGRectZero];
         [_deleteBtn setTitle:@"--" forState:UIControlStateNormal];
         [_deleteBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         _deleteBtn.layer.cornerRadius = 11.f;

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		841DDCB41ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */; };
 		84380D441ED2CA1B008B6C25 /* FMFuncButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84380D431ED2CA1B008B6C25 /* FMFuncButton.m */; };
+		84380D471ED2DC01008B6C25 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84380D461ED2DC01008B6C25 /* Tools.m */; };
 		8457B60E1EC03F200081B1A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B60D1EC03F200081B1A5 /* main.m */; };
 		8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6101EC03F200081B1A5 /* AppDelegate.m */; };
 		8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6181EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld */; };
@@ -90,6 +91,8 @@
 		841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleFoodDetailCell.m; sourceTree = "<group>"; };
 		84380D421ED2CA1B008B6C25 /* FMFuncButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFuncButton.h; sourceTree = "<group>"; };
 		84380D431ED2CA1B008B6C25 /* FMFuncButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFuncButton.m; sourceTree = "<group>"; };
+		84380D451ED2DC01008B6C25 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		84380D461ED2DC01008B6C25 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		8457B6091EC03F200081B1A5 /* FMElemeAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMElemeAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8457B60D1EC03F200081B1A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8457B60F1EC03F200081B1A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -360,6 +363,8 @@
 				8457FF741ECACD1300B1E712 /* FMModalTransition */,
 				8457B68A1EC062280081B1A5 /* View */,
 				8457B6761EC053C30081B1A5 /* Controller */,
+				84380D451ED2DC01008B6C25 /* Tools.h */,
+				84380D461ED2DC01008B6C25 /* Tools.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -719,6 +724,7 @@
 				84E60D971EC15A2A0084CEE0 /* SDWebImageDecoder.m in Sources */,
 				8457B67F1EC05DAF0081B1A5 /* ViewController.m in Sources */,
 				8457FF7A1ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m in Sources */,
+				84380D471ED2DC01008B6C25 /* Tools.m in Sources */,
 				84E60D931EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m in Sources */,
 				8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */,
 				84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */,

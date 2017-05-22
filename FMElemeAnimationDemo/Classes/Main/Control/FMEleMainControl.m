@@ -51,28 +51,6 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 }
 
 #pragma mark - Private methods
-- (UIView *)customSnapShotFromView:(UIView *)inputView {
-    
-    // Make an image from the input view.
-    CGSize size = inputView.bounds.size;
-    size.height -= 1;
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [inputView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    // Create an image view.
-    UIView *snapshot = [[UIImageView alloc] initWithImage:image];
-    snapshot.layer.masksToBounds = NO;
-    snapshot.layer.cornerRadius = 0.0;
-    snapshot.layer.shadowOffset = CGSizeMake(-5.0, 0.0);
-    snapshot.layer.shadowRadius = 5.0;
-    snapshot.layer.shadowOpacity = 0.1;
-    snapshot.backgroundColor = [UIColor clearColor];
-    
-    return snapshot;
-}
-
 - (void)showSmallWindowWithStartView:(UIView *)startView withAnimation:(BOOL)isAnimating
 {
     WS(weakSelf);
@@ -83,7 +61,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
         isSmallWindowAnimating = YES;
         [self.vc.smallWindow setSmallImageFrame:currentSelectImgRect center:CGPointMake(CGRectGetMidX(currentSelectImgRect), CGRectGetMidY(currentSelectImgRect))];
         __weak typeof(startView) weakStartView = startView;
-        [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:weakStartView]];
+        [self.vc.smallWindow updateSmallImageContent:[Tools customSnapShotFromView:weakStartView]];
         [UIView transitionWithView:self.vc.smallWindow duration:0.3 options:UIViewAnimationOptionLayoutSubviews|UIViewAnimationOptionCurveEaseIn animations:^{
             [weakSelf.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
         } completion:^(BOOL finished) {
@@ -91,7 +69,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
             isSmallWindowAnimating = NO;
         }];
     } else {
-        [self.vc.smallWindow updateSmallImageContent:[self customSnapShotFromView:startView]];
+        [self.vc.smallWindow updateSmallImageContent:[Tools customSnapShotFromView:startView]];
         [self.vc.smallWindow setSmallImageFrame:CGRectMake(0, 0, W_SMALL_IMAGE, H_SMALL_IMAGE) center:weakSelf.vc.smallWindow.center];
         [self.vc.smallWindow showAnimationComplete];
     }
@@ -133,7 +111,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 - (void)showFoodDetail
 {
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
-    [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[self customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
+    [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[Tools customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
         [vc customUI];
     }];
 }

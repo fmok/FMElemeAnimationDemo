@@ -18,5 +18,6 @@
 #import "FMPanModalTransition.h"
 #import "UIResponder+Router.h"
 #import "FMFuncButton.h"
+#import "Tools.h"
 
 #endif /* PrefixHeader_pch */
