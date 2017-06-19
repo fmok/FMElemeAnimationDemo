@@ -85,6 +85,7 @@
         _myTableView.backgroundColor = [UIColor clearColor];
         _myTableView.delegate = self.control;
         _myTableView.dataSource = self.control;
+        _myTableView.showsVerticalScrollIndicator = NO;
         _myTableView.contentInset = UIEdgeInsetsMake(0, 0, H_EleBottomToolBar, 0);
     }
     return _myTableView;
