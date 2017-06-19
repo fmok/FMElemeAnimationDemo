@@ -34,19 +34,12 @@
     self.view.backgroundColor = [UIColor whiteColor];
 //    [self configUI];
     [self.control loadData];
-    [self addGes];
 }
 
 #pragma mark - Private methods
 - (void)configUI
 {
     
-}
-
-- (void)addGes
-{
-    pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    [self.view addGestureRecognizer:pan];
 }
 
 #pragma mark - Public methods
@@ -81,9 +74,7 @@
     CGFloat fraction = translation.y / (double)Screen_height;
     fraction = fminf(fmaxf(fraction, 0.0), 1.0);
     if (fraction >= 0.15) {
-        [self dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+        [self dismissViewControllerAnimated:NO completion:nil];
     }
 }
 

@@ -75,9 +75,10 @@ NSString *const FMEleFoodDetailCellIdentifier = @"FMEleFoodDetailCell";
 {
     CGFloat contentOffsetY = scrollView.contentOffset.y;
     if (contentOffsetY < 0 && scrollView.tracking) {
-        [self.vc dismissViewControllerAnimated:YES completion:nil];
+        [self.vc dismissViewControllerAnimated:NO completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"dismissToMainVC" object:nil];
+        }];
     }
-    
 }
 
 

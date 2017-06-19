@@ -34,6 +34,12 @@
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self setNeedsUpdateConstraints];
+}
+
 - (void)updateConstraints
 {
     WS(weakSelf);
@@ -101,8 +107,6 @@
     [self.bottomView addSubview:self.titleLabel];
     [self.bottomView addSubview:self.desTextLabel];
     [self.bottomView addSubview:self.addBtn];
-    
-    [self updateBottomViewConstraints];
     
     self.titleLabel.text = @"香辣鸡腿堡";
     self.desTextLabel.text = @"劲辣、香脆可口，略略略";

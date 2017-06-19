@@ -16,6 +16,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 {
     CGRect currentSelectImgRect;
     BOOL isSmallWindowAnimating;
+    CGRect oldFrame;
 }
 
 @property (nonatomic, strong) CALayer *dotLayer;
@@ -48,6 +49,14 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
         // 添加购物车
 //        [self hiddenSmallWindow];
     }
+}
+
+- (void)abc
+{
+    [UIView animateKeyframesWithDuration:0.3 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+        self.vc.smallWindow.smallImgView.frame = oldFrame;
+    } completion:^(BOOL finished) {
+    }];
 }
 
 #pragma mark - Private methods
@@ -111,8 +120,15 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 - (void)showFoodDetail
 {
     FMEleFoodDetailController *vc = [[FMEleFoodDetailController alloc] init];
-    [self.transition presentModalViewControllerWithFromVC:self.vc fromRect:self.vc.smallWindow.smallImgView.frame fromView:[Tools customSnapShotFromView:self.vc.smallWindow.smallImgView] toVC:vc animated:YES completion:^{
-        [vc customUI];
+    oldFrame = self.vc.smallWindow.smallImgView.frame;
+    [UIView animateKeyframesWithDuration:0.3 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+        self.vc.smallWindow.smallImgView.frame = CGRectMake(0, 0, Screen_width, Screen_width*oldFrame.size.height/oldFrame.size.width);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.vc presentViewController:vc animated:NO completion:^{
+                [vc customUI];
+            }];
+        });
+    } completion:^(BOOL finished) {
     }];
 }
 

@@ -37,6 +37,7 @@
     [self.myTableView sendSubviewToBack:self.headerView];
     [self showFpsLabel];
     [[NSNotificationCenter defaultCenter] addObserver:self.control selector:@selector(hiddenSmallWindow) name:@"hiddenSmallWindow" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.control selector:@selector(abc) name:@"dismissToMainVC" object:nil];
 }
 
 #pragma mark - Private methods
