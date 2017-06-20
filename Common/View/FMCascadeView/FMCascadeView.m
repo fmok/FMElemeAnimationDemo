@@ -12,6 +12,8 @@
 
 @interface FMCascadeView()
 
+@property (nonatomic, strong, readwrite) UITableView *_Nullable leftTableView;
+@property (nonatomic, strong, readwrite) UITableView *_Nullable rightTableView;
 @property (nonatomic, strong) LeftControl *leftControl;
 @property (nonatomic, strong) RightControl *rightControl;
 
@@ -65,6 +67,11 @@
 - (BOOL)isRightListIsDragging
 {
     return self.rightTableView.isDragging;
+}
+
+- (BOOL)isRightListIsDecelerating
+{
+    return self.rightTableView.isDecelerating;
 }
 
 #pragma mark - getter & setter

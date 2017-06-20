@@ -207,9 +207,9 @@
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
-//    if (![self.vc.cascadeView isRightListIsDragging]) {
-//        return;
-//    }
+    if (![self.vc.cascadeView isRightListIsDragging]) {
+        return;
+    }
     CGFloat contentOffsetY = [change[@"new"] CGPointValue].y;
     NSLog(@"\n*** %@ ***\n", @(contentOffsetY));
     // 标题显隐 + 列表偏移

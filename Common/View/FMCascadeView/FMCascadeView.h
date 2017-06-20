@@ -43,11 +43,12 @@
 @property (nonatomic, weak) id<FMCascadeViewDelegate> _Nullable delegate;
 @property (nonatomic, weak) id<FMCascadeViewDataSource> _Nullable dataSource;
 
-@property (nonatomic, strong) UITableView *_Nullable leftTableView;
-@property (nonatomic, strong) UITableView *_Nullable rightTableView;
+@property (nonatomic, strong, readonly) UITableView *_Nullable leftTableView;
+@property (nonatomic, strong, readonly) UITableView *_Nullable rightTableView;
 
 - (void)configuration;
 - (void)loadData;
 - (BOOL)isRightListIsDragging;
+- (BOOL)isRightListIsDecelerating;
 
 @end
