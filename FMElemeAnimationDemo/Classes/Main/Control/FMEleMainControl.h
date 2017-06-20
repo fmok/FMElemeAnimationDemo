@@ -9,16 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "FMEleMainViewController.h"
 #import "FMEleMainListCell.h"
+#import "LeftCell.h"
 
 @interface FMEleMainControl : NSObject<
-    UITableViewDelegate,
-    UITableViewDataSource,
     FMEleMainListCellDelegate,
-    FMEleMainSmallWindowDelegate>
+    FMEleMainSmallWindowDelegate,
+    FMCascadeViewDelegate,
+    FMCascadeViewDataSource>
 
 @property (nonatomic, weak) FMEleMainViewController *vc;
 
-- (void)registerCell;
 - (void)loadData;
 - (void)hiddenSmallWindow;
 - (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo;

@@ -9,6 +9,12 @@
 #import "FMEleMainListCell.h"
 #import "UIImageView+WebCache.h"
 
+#define GAP_TOP 10.f
+#define GAP_MIDDLE 10.f
+#define GAP_BOTTOM 10.f
+#define W_H_Img 60.f
+#define H_BOTTOM_BTN 22.f
+
 @interface FMEleMainListCell()
 {
     NSInteger currentCount;
@@ -47,7 +53,7 @@
     [self.imgView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf).offset(10.f);
         make.top.equalTo(weakSelf).offset(10.f);
-        make.size.mas_equalTo(CGSizeMake(60.f, 60.f));
+        make.size.mas_equalTo(CGSizeMake(W_H_Img, W_H_Img));
     }];
     [self.titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(weakSelf.imgView.mas_right).offset(10.f);
@@ -69,7 +75,7 @@
     [self.deleteBtn mas_updateConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(weakSelf.countLabel.mas_left).offset(-5.f);
         make.centerY.equalTo(weakSelf.countLabel);
-        make.size.mas_equalTo(CGSizeMake(22, 22));
+        make.size.mas_equalTo(CGSizeMake(H_BOTTOM_BTN, H_BOTTOM_BTN));
     }];
     
     [super updateConstraints];
@@ -82,6 +88,11 @@
     self.titleLabel.text = [NSString stringWithFormat:@"滋补养生小炒肉 %@-%@", @(section), @(index)];
     self.desLabel.text = @"月售71份  好评率100%";
     [self setNeedsUpdateConstraints];
+}
+
++ (CGFloat)heightForCell
+{
+    return GAP_TOP + W_H_Img + GAP_MIDDLE + H_BOTTOM_BTN + GAP_BOTTOM;
 }
 
 #pragma mark - Private methods

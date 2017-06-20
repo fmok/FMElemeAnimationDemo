@@ -10,8 +10,6 @@
 #import "FMEleFoodDetailController.h"
 #import "FMEleJoinCartAnimation.h"
 
-NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
-
 @interface FMEleMainControl()
 {
     CGRect currentSelectImgRect;
@@ -29,11 +27,6 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
 @implementation FMEleMainControl
 
 #pragma mark - Public methods
-- (void)registerCell
-{
-    [self.vc.myTableView registerClass:[FMEleMainListCell class] forCellReuseIdentifier:FMEleMainListCellIdentifier];
-}
-
 - (void)loadData
 {
     [self.vc.headerView updateHeaderView];
@@ -132,67 +125,97 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     }];
 }
 
-#pragma mark - UITableViewDelegate
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - FMCascadeViewDelegate
+- (void)registerLeftCell:(UITableView * _Nullable)tableView identifier:(NSString * _Nullable)identifier
 {
-    return 80.f;
+    [tableView registerClass:[LeftCell class] forCellReuseIdentifier:identifier];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (CGFloat)fm_left_tableView:(UITableView * _Nullable)tableView heightForRowAtIndexPath:(NSIndexPath * _Nullable)indexPath
+{
+    return 40.f;
+}
+
+- (void)fm_left_tableView:(UITableView * _Nullable)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nullable)indexPath
+{
+    
+}
+
+- (void)registerRightCell:(UITableView * _Nullable)tableView identifier:(NSString * _Nullable)identifier
+{
+    [tableView registerClass:[FMEleMainListCell class] forCellReuseIdentifier:identifier];
+}
+
+- (CGFloat)fm_right_tableView:(UITableView * _Nullable)tableView heightForRowAtIndexPath:(NSIndexPath * _Nullable)indexPath
+{
+    return [FMEleMainListCell heightForCell];
+}
+
+- (CGFloat)fm_right_tableView:(UITableView * _Nullable)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30.f;
+}
+
+- (void)fm_right_tableView:(UITableView * _Nullable)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nullable)indexPath
 {
     FMEleMainListCell *currentCell = [tableView cellForRowAtIndexPath:indexPath];
     currentSelectImgRect = [currentCell convertRect:currentCell.imgView.frame toView:self.vc.view];
     [self showSmallWindowWithStartView:currentCell.imgView withAnimation:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+#pragma mark - FMCascadeViewDataSource
+- (NSInteger)fm_left_tableView:(UITableView * _Nullable)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 30.f;
+    return SECTION_COUNT;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (UITableViewCell * _Nullable)fm_left_tableView:(UITableView * _Nullable)tableView cellForRowAtIndexPath:(NSIndexPath * _Nullable)indexPath identifier:(NSString * _Nullable)identifier
 {
-    return CGFLOAT_MIN;
+    LeftCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"* sec %@ *", @(indexPath.row)];
+    return cell;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (NSInteger)fm_left_numberOfSectionsInTableView:(UITableView * _Nullable)tableView
 {
-    UILabel *label = [[UILabel alloc] init];
-    label.backgroundColor = [UIColor grayColor];
-    label.textColor = [UIColor blackColor];
-    label.font = [UIFont systemFontOfSize:16.f];
-    label.text = [NSString stringWithFormat:@"   *** package - %@ ***", @(section)];
-    return label;
+    return 1;
 }
 
-#pragma mark - UITableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)fm_right_tableView:(UITableView * _Nullable)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return 2;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell * _Nullable)fm_right_tableView:(UITableView * _Nullable)tableView cellForRowAtIndexPath:(NSIndexPath * _Nullable)indexPath identifier:(NSString * _Nullable)identifier
 {
-    FMEleMainListCell *cell = [tableView dequeueReusableCellWithIdentifier:FMEleMainListCellIdentifier forIndexPath:indexPath];
+    FMEleMainListCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
     [cell updateData:indexPath.section index:indexPath.row];
     cell.delegate = self;
     return cell;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)fm_right_numberOfSectionsInTableView:(UITableView * _Nullable)tableView
 {
-    return 2;
+    return SECTION_COUNT;
+}
+
+- (NSString * _Nullable)fm_right_tableView:(UITableView * _Nullable)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [NSString stringWithFormat:@"& sec %@ &", @(section)];
 }
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
 {
+//    if (![self.vc.cascadeView isRightListIsDragging]) {
+//        return;
+//    }
     CGFloat contentOffsetY = [change[@"new"] CGPointValue].y;
     NSLog(@"\n*** %@ ***\n", @(contentOffsetY));
     // 标题显隐 + 列表偏移
     if (H_header_view - contentOffsetY <= 64.f) {
         self.vc.navTitleLabel.hidden = NO;
-        [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [self.vc.cascadeView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(64.f);
         }];
     } else {
@@ -201,12 +224,12 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
             // 向下滑动
             CGFloat offsetY = H_header_view + contentOffsetY;
             NSLog(@"&&&&&& %@ &&&&&&", @(offsetY));
-            [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.vc.cascadeView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(H_header_view);
             }];
         } else {
             // 向上滑动
-            [self.vc.myTableView mas_updateConstraints:^(MASConstraintMaker *make) {
+            [self.vc.cascadeView mas_updateConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(H_header_view-contentOffsetY);
             }];
         }
