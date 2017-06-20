@@ -12,6 +12,9 @@
 {
     CGRect _fromRect;
     UIView *_fromView;
+    
+    CGRect _toRect;
+    UIView *_toView;
 }
 
 @property (nonatomic, strong, readwrite) FMPercentDrivenInteractiveTransition * _Nullable mPercentDrivenInteractiveTransition;
@@ -30,7 +33,7 @@
 }
 
 #pragma mark - Public methods
-- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC fromRect:(CGRect)fromRect fromView:(UIView *)fromView toVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
+- (void)presentModalViewControllerWithFromVC:(UIViewController * _Nullable)fromVC fromRect:(CGRect)fromRect fromView:(UIView * _Nullable)fromView toVC:(UIViewController * _Nullable)toVC animated:(BOOL)animated completion:(void (^ __nullable)(void))completion
 {
     _fromRect = fromRect;
     _fromView = fromView;
@@ -39,11 +42,11 @@
     [fromVC presentViewController:toVC animated:animated completion:completion];
 }
 
-- (void)dismissViewController:(UIViewController * _Nullable)objVC animated: (BOOL)flag completion: (void (^ __nullable)(void))completion
-{
-    objVC.transitioningDelegate = self;
-    [objVC dismissViewControllerAnimated:flag completion:completion];
-}
+//- (void)dismissViewController:(UIViewController * _Nullable)objVC animated:(BOOL)flag completion:(void (^ __nullable)(void))completion
+//{
+//    objVC.transitioningDelegate = self;
+//    [objVC dismissViewControllerAnimated:flag completion:completion];
+//}
 
 #pragma mark - UIViewControllerAnimatedTransitioning
 - (NSTimeInterval)transitionDuration:(nullable id <UIViewControllerContextTransitioning>)transitionContext

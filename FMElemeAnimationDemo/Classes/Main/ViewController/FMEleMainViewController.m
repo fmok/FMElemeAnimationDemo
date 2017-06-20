@@ -23,20 +23,20 @@
 {
     NSLog(@"\n*** %@ ** %s ***\n", self.class, __func__);
     [[NSNotificationCenter defaultCenter] removeObserver:self.control name:@"hiddenSmallWindow" object:nil];
-    [self.myTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
+    [self.cascadeView.rightTableView removeObserver:self.control forKeyPath:@"contentOffset" context:nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self configUI];
-    [self.control registerCell];
     [self customNav];
     [self.control loadData];
-    [self.myTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
-    [self.myTableView sendSubviewToBack:self.headerView];
+    [self.cascadeView.rightTableView addObserver:self.control forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+    [self.cascadeView sendSubviewToBack:self.headerView];
     [self showFpsLabel];
     [[NSNotificationCenter defaultCenter] addObserver:self.control selector:@selector(hiddenSmallWindow) name:@"hiddenSmallWindow" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self.control selector:@selector(updateToOrginFrame:) name:@"dismissToMainVC" object:nil];
 }
 
 #pragma mark - Private methods
@@ -49,8 +49,8 @@
         make.left.and.right.and.top.equalTo(weakSelf.view);
         make.height.mas_equalTo(H_header_view);
     }];
-    [self.view addSubview:self.myTableView];
-    [self.myTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.view addSubview:self.cascadeView];
+    [self.cascadeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.and.right.equalTo(weakSelf.view);
         make.top.equalTo(weakSelf.view).offset(H_header_view);
         make.bottom.equalTo(weakSelf.view);
@@ -77,16 +77,15 @@
 }
 
 #pragma mark - getter & setter
-- (UITableView *)myTableView
+- (FMCascadeView *)cascadeView
 {
-    if (!_myTableView) {
-        _myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _myTableView.backgroundColor = [UIColor clearColor];
-        _myTableView.delegate = self.control;
-        _myTableView.dataSource = self.control;
-        _myTableView.contentInset = UIEdgeInsetsMake(0, 0, H_EleBottomToolBar, 0);
+    if (!_cascadeView) {
+        _cascadeView = [[FMCascadeView alloc] initWithFrame:CGRectZero];
+        _cascadeView.delegate = self.control;
+        _cascadeView.dataSource = self.control;
+        [_cascadeView configuration];
     }
-    return _myTableView;
+    return _cascadeView;
 }
 
 - (FMEleMainControl *)control

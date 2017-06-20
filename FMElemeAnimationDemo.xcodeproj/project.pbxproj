@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8428BE1C1ECC8E4700E6A909 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 8428BE1B1ECC8E4700E6A909 /* UIResponder+Router.m */; };
+		841DDCB41ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */; };
+		8425AA931EF8F38200732B18 /* FMCascadeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425AA8A1EF8F38200732B18 /* FMCascadeView.m */; };
+		8425AA951EF8F38200732B18 /* LeftControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425AA8E1EF8F38200732B18 /* LeftControl.m */; };
+		8425AA971EF8F38200732B18 /* RightControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425AA921EF8F38200732B18 /* RightControl.m */; };
+		8425AA9A1EF9002000732B18 /* LeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425AA991EF9002000732B18 /* LeftCell.m */; };
+		84380D441ED2CA1B008B6C25 /* FMFuncButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 84380D431ED2CA1B008B6C25 /* FMFuncButton.m */; };
+		84380D471ED2DC01008B6C25 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 84380D461ED2DC01008B6C25 /* Tools.m */; };
 		8457B60E1EC03F200081B1A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B60D1EC03F200081B1A5 /* main.m */; };
 		8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6101EC03F200081B1A5 /* AppDelegate.m */; };
 		8457B61A1EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8457B6181EC03F200081B1A5 /* FMElemeAnimationDemo.xcdatamodeld */; };
@@ -85,8 +91,20 @@
 
 /* Begin PBXFileReference section */
 		84072CB01EC0AAA4006A16F6 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
-		8428BE1A1ECC8E4700E6A909 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
-		8428BE1B1ECC8E4700E6A909 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
+		841DDCB21ECD44EB00CBF6D5 /* FMEleFoodDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMEleFoodDetailCell.h; sourceTree = "<group>"; };
+		841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMEleFoodDetailCell.m; sourceTree = "<group>"; };
+		8425AA891EF8F38200732B18 /* FMCascadeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMCascadeView.h; sourceTree = "<group>"; };
+		8425AA8A1EF8F38200732B18 /* FMCascadeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMCascadeView.m; sourceTree = "<group>"; };
+		8425AA8D1EF8F38200732B18 /* LeftControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftControl.h; sourceTree = "<group>"; };
+		8425AA8E1EF8F38200732B18 /* LeftControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftControl.m; sourceTree = "<group>"; };
+		8425AA911EF8F38200732B18 /* RightControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightControl.h; sourceTree = "<group>"; };
+		8425AA921EF8F38200732B18 /* RightControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightControl.m; sourceTree = "<group>"; };
+		8425AA981EF9002000732B18 /* LeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftCell.h; sourceTree = "<group>"; };
+		8425AA991EF9002000732B18 /* LeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftCell.m; sourceTree = "<group>"; };
+		84380D421ED2CA1B008B6C25 /* FMFuncButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMFuncButton.h; sourceTree = "<group>"; };
+		84380D431ED2CA1B008B6C25 /* FMFuncButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMFuncButton.m; sourceTree = "<group>"; };
+		84380D451ED2DC01008B6C25 /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
+		84380D461ED2DC01008B6C25 /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		8457B6091EC03F200081B1A5 /* FMElemeAnimationDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FMElemeAnimationDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8457B60D1EC03F200081B1A5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8457B60F1EC03F200081B1A5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -232,13 +250,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8428BE191ECC8E1400E6A909 /* Categories */ = {
+		841DDCB11ECD44E200CBF6D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8428BE1A1ECC8E4700E6A909 /* UIResponder+Router.h */,
-				8428BE1B1ECC8E4700E6A909 /* UIResponder+Router.m */,
+				841DDCB21ECD44EB00CBF6D5 /* FMEleFoodDetailCell.h */,
+				841DDCB31ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m */,
 			);
-			path = Categories;
+			path = View;
+			sourceTree = "<group>";
+		};
+		8425AA881EF8F38200732B18 /* FMCascadeView */ = {
+			isa = PBXGroup;
+			children = (
+				8425AA891EF8F38200732B18 /* FMCascadeView.h */,
+				8425AA8A1EF8F38200732B18 /* FMCascadeView.m */,
+				8425AA8D1EF8F38200732B18 /* LeftControl.h */,
+				8425AA8E1EF8F38200732B18 /* LeftControl.m */,
+				8425AA911EF8F38200732B18 /* RightControl.h */,
+				8425AA921EF8F38200732B18 /* RightControl.m */,
+			);
+			path = FMCascadeView;
 			sourceTree = "<group>";
 		};
 		8457B6001EC03F200081B1A5 = {
@@ -354,10 +385,11 @@
 		8457B6751EC053C30081B1A5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				8428BE191ECC8E1400E6A909 /* Categories */,
 				8457FF741ECACD1300B1E712 /* FMModalTransition */,
 				8457B68A1EC062280081B1A5 /* View */,
 				8457B6761EC053C30081B1A5 /* Controller */,
+				84380D451ED2DC01008B6C25 /* Tools.h */,
+				84380D461ED2DC01008B6C25 /* Tools.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -383,6 +415,7 @@
 		8457B68A1EC062280081B1A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8425AA881EF8F38200732B18 /* FMCascadeView */,
 				8457B68B1EC062280081B1A5 /* FMEleNavigationBar */,
 			);
 			path = View;
@@ -491,9 +524,9 @@
 		84E60DB21EC1719F0084CEE0 /* FoodDetail */ = {
 			isa = PBXGroup;
 			children = (
+				841DDCB11ECD44E200CBF6D5 /* View */,
 				84E60DC61EC171D20084CEE0 /* Control */,
 				84E60DC71EC171D20084CEE0 /* Controller */,
-				84E60DC81EC171D20084CEE0 /* View */,
 			);
 			path = FoodDetail;
 			sourceTree = "<group>";
@@ -526,6 +559,8 @@
 				84E60DB91EC1719F0084CEE0 /* FMEleMainHeaderInfoView.m */,
 				84E60DBA1EC1719F0084CEE0 /* FMEleMainHeaderView.h */,
 				84E60DBB1EC1719F0084CEE0 /* FMEleMainHeaderView.m */,
+				8425AA981EF9002000732B18 /* LeftCell.h */,
+				8425AA991EF9002000732B18 /* LeftCell.m */,
 				84E60DBC1EC1719F0084CEE0 /* FMEleMainListCell.h */,
 				84E60DBD1EC1719F0084CEE0 /* FMEleMainListCell.m */,
 				84E60DCF1EC176BE0084CEE0 /* FMEleBottomToolBar.h */,
@@ -534,6 +569,8 @@
 				8457FF851ECAF17D00B1E712 /* FMEleMainSmallWindow.m */,
 				8457FF871ECAF48E00B1E712 /* FMEleMainSmallImgView.h */,
 				8457FF881ECAF48E00B1E712 /* FMEleMainSmallImgView.m */,
+				84380D421ED2CA1B008B6C25 /* FMFuncButton.h */,
+				84380D431ED2CA1B008B6C25 /* FMFuncButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -563,13 +600,6 @@
 				84E60DCA1EC171E10084CEE0 /* FMEleFoodDetailController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		84E60DC81EC171D20084CEE0 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		84E60DD21EC191460084CEE0 /* YYFPSLabel */ = {
@@ -722,6 +752,8 @@
 				84E60D971EC15A2A0084CEE0 /* SDWebImageDecoder.m in Sources */,
 				8457B67F1EC05DAF0081B1A5 /* ViewController.m in Sources */,
 				8457FF7A1ECACD1300B1E712 /* FMPercentDrivenInteractiveTransition.m in Sources */,
+				84380D471ED2DC01008B6C25 /* Tools.m in Sources */,
+				8425AA971EF8F38200732B18 /* RightControl.m in Sources */,
 				84E60D931EC15A2A0084CEE0 /* MKAnnotationView+WebCache.m in Sources */,
 				8457B6921EC071770081B1A5 /* ZLNavigationController.m in Sources */,
 				84E60DD81EC191460084CEE0 /* YYWeakProxy.m in Sources */,
@@ -739,13 +771,17 @@
 				84E60D981EC15A2A0084CEE0 /* SDWebImageDownloader.m in Sources */,
 				8457B6111EC03F200081B1A5 /* AppDelegate.m in Sources */,
 				84E60DAE1EC16FD10084CEE0 /* UIImage+ImageEffects.m in Sources */,
+				8425AA931EF8F38200732B18 /* FMCascadeView.m in Sources */,
 				84E60DA11EC15A2A0084CEE0 /* UIImageView+WebCache.m in Sources */,
 				84E60D9C1EC15A2A0084CEE0 /* UIButton+WebCache.m in Sources */,
 				84E60DC41EC1719F0084CEE0 /* FMEleMainListCell.m in Sources */,
 				8457B65C1EC040490081B1A5 /* MASConstraint.m in Sources */,
 				8457B65E1EC040490081B1A5 /* MASLayoutConstraint.m in Sources */,
+				8425AA9A1EF9002000732B18 /* LeftCell.m in Sources */,
+				8425AA951EF8F38200732B18 /* LeftControl.m in Sources */,
 				8457B6611EC040490081B1A5 /* NSArray+MASAdditions.m in Sources */,
 				84E60DC51EC1719F0084CEE0 /* FMEleMainViewController.m in Sources */,
+				84380D441ED2CA1B008B6C25 /* FMFuncButton.m in Sources */,
 				84E60DC21EC1719F0084CEE0 /* FMEleMainHeaderInfoView.m in Sources */,
 				8457B6601EC040490081B1A5 /* MASViewConstraint.m in Sources */,
 				8457B65F1EC040490081B1A5 /* MASViewAttribute.m in Sources */,
@@ -766,10 +802,10 @@
 				8457B65B1EC040490081B1A5 /* MASCompositeConstraint.m in Sources */,
 				84E60DC11EC1719F0084CEE0 /* FMEleMainControl.m in Sources */,
 				84E60DCE1EC171F90084CEE0 /* FMEleFoodDetailControl.m in Sources */,
-				8428BE1C1ECC8E4700E6A909 /* UIResponder+Router.m in Sources */,
 				84E60DA21EC15A2A0084CEE0 /* UIView+WebCacheOperation.m in Sources */,
 				84E60DA01EC15A2A0084CEE0 /* UIImageView+HighlightedWebCache.m in Sources */,
 				8457B6621EC040490081B1A5 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				841DDCB41ECD44EB00CBF6D5 /* FMEleFoodDetailCell.m in Sources */,
 				8457FF891ECAF48E00B1E712 /* FMEleMainSmallImgView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

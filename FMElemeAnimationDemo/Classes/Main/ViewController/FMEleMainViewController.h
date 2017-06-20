@@ -11,10 +11,13 @@
 #import "FMEleMainHeaderView.h"
 #import "FMEleBottomToolBar.h"
 #import "FMEleMainSmallWindow.h"
+#import "FMCascadeView.h"
+
+#define SECTION_COUNT 20
 
 @interface FMEleMainViewController : FMBaseViewController
 
-@property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) FMCascadeView *cascadeView;
 @property (nonatomic, strong) UILabel *navTitleLabel;
 @property (nonatomic, strong) FMEleMainHeaderView *headerView;
 @property (nonatomic, strong) FMEleBottomToolBar *toolbar;

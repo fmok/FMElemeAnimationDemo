@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "FMEleFoodDetailController.h"
+#import "FMEleFoodDetailCell.h"
 
 @interface FMEleFoodDetailControl : NSObject<
     UITableViewDelegate,
     UITableViewDataSource>
 
 @property (nonatomic, weak) FMEleFoodDetailController *vc;
+
+- (void)loadData;
+- (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo;
 
 @end

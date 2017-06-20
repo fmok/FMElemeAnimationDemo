@@ -23,5 +23,6 @@
 @property (nonatomic, weak) id<FMEleMainListCellDelegate>delegate;
 
 - (void)updateData:(NSInteger)section index:(NSInteger)index;
++ (CGFloat)heightForCell;
 
 @end

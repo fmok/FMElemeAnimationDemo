@@ -11,15 +11,8 @@
 #define W_SMALL_IMAGE Screen_width*0.8
 #define H_SMALL_IMAGE Screen_height*0.6
 
-@protocol FMEleMainSmallImgViewDelegate <NSObject>
-
-- (void)addChartAction;
-
-@end
-
 @interface FMEleMainSmallImgView : UIView
 
-@property (nonatomic, weak) id<FMEleMainSmallImgViewDelegate>delegate;
 @property (nonatomic, strong, readonly) UIImageView *contentImgView;
 
 - (void)setContentImage:(UIView *)tmpImage;
