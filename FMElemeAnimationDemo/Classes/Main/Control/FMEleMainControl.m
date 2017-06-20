@@ -51,7 +51,7 @@ NSString *const FMEleMainListCellIdentifier = @"FMEleMainListCell";
     }
 }
 
-- (void)abc
+- (void)updateToOrginFrame:(NSNotification *)notifi
 {
     [UIView animateKeyframesWithDuration:0.3 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
         self.vc.smallWindow.smallImgView.frame = oldFrame;

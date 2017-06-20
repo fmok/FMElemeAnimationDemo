@@ -22,6 +22,6 @@
 - (void)loadData;
 - (void)hiddenSmallWindow;
 - (void)routerEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo;
-- (void)abc;
+- (void)updateToOrginFrame:(NSNotification *)notifi;
 
 @end
